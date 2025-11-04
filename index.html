@@ -1,0 +1,1250 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<link rel="icon" type="image/x-icon" href="https://i.imgur.com/CIstRaz.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Distribuidora Kia & Hyundai - Peças Hyundai & Kia</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+:root{--azul-principal:#3d4d9d;--azul-claro:#007bff;--branco:#fff;--cinza-fundo:#f4f6f9;--verde-whatsapp:#309716;--vermelho-preco:#d9534f; --cor-menu-texto: #333; --cor-menu-hover: #004a99; --cor-submenu-fundo: #fff;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+body{background-color:var(--cinza-fundo);line-height:1.6}
+.container{width:90%;max-width:1200px;margin:0 auto}
+#pagina-container{display:flex;flex-direction:column;min-height:100vh}
+#conteudo-principal{flex-grow:1}
+
+/* --- NOVO CSS PARA O CABEÇALHO (MENU NOVO) --- */
+.novo-header {
+    background-color: var(--branco); 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 0px 0; 
+    border-bottom: 1px solid #eee;
+}
+
+.novo-header .container {
+    display: flex;
+    justify-content: flex-start; /* Ajustado para mobile */
+    align-items: center;
+    padding: 0; /* Ajustado para mobile */
+}
+
+/* Garante que o menu principal só apareça no desktop */
+.novo-header .main-nav {
+    display: block;
+    width: 100%;
+}
+
+.novo-header .main-nav ul {
+    list-style: none;
+    display: flex; 
+    margin: 0;
+    padding: 15px 0; /* Padding vertical centraliza */
+    justify-content: center; /* Centraliza os itens do menu no desktop */
+}
+
+.novo-header .main-nav > ul > li {
+    position: relative; 
+    margin: 0 15px; 
+}
+
+.novo-header .main-nav a {
+    text-decoration: none;
+    color: var(--cor-menu-texto);
+    font-weight: 600;
+    padding: 10px 5px; 
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.novo-header .main-nav a:hover {
+    color: var(--cor-menu-hover);
+}
+
+.novo-header .main-nav .fa-chevron-down {
+    margin-left: 5px;
+    font-size: 0.7em; 
+    transition: transform 0.3s ease;
+}
+
+/* Sub-menu styling */
+.novo-header .main-nav ul ul {
+    display: none; 
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    background-color: var(--cor-submenu-fundo);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    min-width: 180px; 
+    z-index: 900; 
+    border-radius: 5px;
+    padding: 10px 0;
+}
+
+.novo-header .main-nav ul ul li {
+    padding: 0; 
+}
+
+.novo-header .main-nav ul ul a {
+    padding: 8px 15px; 
+    color: var(--cor-menu-texto);
+    white-space: nowrap; 
+    font-weight: 400; 
+    justify-content: flex-start; 
+}
+
+.novo-header .main-nav ul ul a:hover {
+    background-color: #f5f5f5; 
+    color: var(--cor-menu-hover);
+}
+
+/* Mostra o sub-menu ao passar o mouse */
+.novo-header .main-nav > ul > li:hover > ul {
+    display: block;
+}
+
+/* Rotaciona a seta para cima ao passar o mouse */
+.novo-header .main-nav > ul > li:hover > a .fa-chevron-down {
+    transform: rotate(180deg);
+}
+/* --- FIM NOVO CSS PARA O CABEÇALHO --- */
+
+
+/* ESTILO DO HEADER AZUL (PADRÃO: DESKTOP) */
+.header-azul{
+    position: relative; 
+    /* Desktop: Cor sólida azul, sem imagem de fundo */
+    background-color: var(--azul-principal);
+    background-image: none;
+    color:var(--branco);
+    padding:30px 0; 
+    box-shadow:0 2px 4px rgba(0,0,0,.3); 
+    z-index: 10; 
+}
+
+/* Pseudoelemento para o efeito de FADE/Opacidade (OCULTADO NO DESKTOP) */
+.header-azul::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Opacidade zero no desktop */
+    background-color: rgba(0, 0, 0, 0.4); 
+    opacity: 0; /* Chave: Esconde o pseudoelemento no Desktop */
+    z-index: -1; 
+}
+
+.header-azul .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px; 
+    position: relative; 
+    z-index: 1;
+}
+
+/* NOVO: Estilo para a área do link que engloba as logos e o texto */
+.logo-area-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--branco); 
+    flex-shrink: 0;
+}
+/* Novo: Estilo para o H1 de texto */
+.logo-text{
+    font-size:1.8em;
+    margin-left: 10px; 
+    flex-shrink: 0; 
+    /* Remove text-shadow no Desktop (fundo sólido) */
+    text-shadow: none; 
+} 
+
+.menu-hamburguer { /* Botão hamburguer oculto no desktop */
+    display: none; 
+}
+
+/* ESTILO DA BARRA DE PESQUISA */
+.search-container {
+    flex-grow: 1; 
+    max-width: 400px; 
+    position: relative;
+}
+#search-input {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    outline: none;
+    transition: all 0.3s;
+}
+/* Ajuste de sombra para a barra de busca, para o fundo sólido */
+#search-input:focus {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+/* FIM ESTILO DA BARRA DE PESQUISA */
+
+/* --- CSS PARA LOGOS NA NAVBAR (TAMANHOS E CORES) --- */
+/* Logo 1: Branca/Vazada (Distribuidora) */
+.logo-distribuidora-nav {
+    height: 40px; 
+    margin-right: 10px; 
+    flex-shrink: 0;
+    filter: brightness(0) invert(1); /* Mantida branca */
+}
+
+/* Logo 2: Colorida (Kia & Hyundai) */
+.logo-kia-hyundai-nav {
+    height: 45px; 
+    margin-right: 0px; 
+    flex-shrink: 0;
+    filter: none; /* Mantida colorida */
+}
+
+
+@media (max-width: 768px) { 
+    
+    /* === MOBILE: ADICIONA A IMAGEM DE FUNDO E O FADE === */
+    .header-azul{
+        /* Mobile: Adiciona a imagem de fundo */
+        background-image: url('https://img0.icarros.com/dbimg/imgnoticia/4/23112_1');
+        background-size: cover; 
+        background-position: center; 
+        padding: 20px 0; /* Padding ajustado para mobile */
+    }
+    
+    .header-azul::before {
+        /* Mobile: Ativa o fade (90% de opacidade) */
+        opacity: 1; 
+    }
+
+    .logo-text{
+        /* Devolve a sombra para o texto no mobile (para o fundo com imagem) */
+        text-shadow: 1px 1px 4px rgba(0,0,0,1); 
+    }
+
+    /* Logs e Layout Mobile (mantido como estava) */
+    .logo-distribuidora-nav {
+        height: 45px; 
+        margin-right: 5px;
+        filter: brightness(0) invert(1); 
+    }
+    .logo-kia-hyundai-nav {
+        height: 50px; 
+        margin-right: 10px;
+        filter: none; 
+    }
+
+    .logo-text {
+        display: none; 
+    }
+
+    .logo-area-link { 
+        order: 3; 
+        flex-grow: 1; 
+        justify-content: flex-start;
+        margin-right: 5px; 
+    } 
+
+    .header-azul .container {
+        justify-content: flex-start; 
+        gap: 5px; 
+    }
+    
+    .search-container { 
+        order: 5; 
+    }
+    .nav-acoes { 
+        order: 4; 
+    }
+}
+/* --- FIM NOVO CSS PARA LOGOS NA NAVBAR --- */
+
+.btn-carrinho{background-color:var(--azul-claro);color:var(--branco);border:none;padding:10px 15px;border-radius:5px;cursor:pointer;font-weight:700;transition:background-color .3s; flex-shrink: 0;}
+.btn-carrinho:hover{background-color:#0056b3}
+
+/* --- ESTILO DO MINI-BANNER --- */
+.mini-banner-area {
+    width: 100%;
+    overflow: hidden; 
+    height: 350px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: #f0f0f0; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+#banner-slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out; 
+    height: 100%;
+    white-space: nowrap; 
+    align-items: center;
+}
+.banner-slide {
+    width: 100%; 
+    flex-shrink: 0;
+    height: 100%;
+    display: inline-flex; 
+    align-items: center;
+    justify-content: center;
+}
+.banner-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: center;
+}
+/* --- FIM ESTILO DO MINI-BANNER --- */
+
+
+.produtos-destaque{padding:40px 0}
+.produtos-destaque h3{text-align:center;color:var(--azul-principal);margin-bottom:30px;font-size:2em}
+.grid-produtos{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;min-height:300px;position:relative}
+.produto-card.hidden {
+    display: none !important;
+}
+.produto-card{background-color:var(--branco);border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.1);padding:20px;text-align:center;transition:transform .3s; cursor: pointer;}
+.produto-card:hover{transform:translateY(-5px);box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.produto-card img{width:100%;max-height:180px;object-fit:contain;margin-bottom:15px}
+.produto-card h4{color:var(--azul-principal);font-size:1.2em;margin-bottom:5px}
+.produto-card p{color:#666;font-size:.9em;margin-bottom:10px}
+.preco{font-size:1.4em;color:var(--vermelho-preco);font-weight:700;margin-bottom:15px;display:block}
+.btn-adicionar{background-color:var(--cor-menu-hover);color:var(--branco);border:none;padding:10px 20px;border-radius:5px;cursor:pointer;font-weight:700;transition:background-color .3s}
+.btn-adicionar:hover{background-color:var(--azul-claro)}
+.modal{display:none;position:fixed;z-index:1001;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,.4)}
+.modal-content{background-color:var(--branco);margin:10% auto;padding:25px;border-radius:10px;width:90%;max-width:500px;position:relative;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.fechar-modal{color:#aaa;float:right;font-size:28px;font-weight:700;cursor:pointer}
+.fechar-modal:hover{color:#000}
+#itens-carrinho{margin-top:15px;max-height:300px;overflow-y:auto;border-bottom:1px solid #eee;padding-bottom:15px}
+.item-carrinho{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+    position: relative;
+}
+.item-carrinho span:nth-child(1) { flex: 3; margin-right: 15px; font-size: 0.95em; min-width: 120px;}
+.item-carrinho span:nth-child(2) { flex: 0 0 40px; text-align: center; font-weight: bold;}
+.item-carrinho strong { flex: 1; text-align: right; min-width: 70px; font-size: 1em;}
+.item-carrinho .btn-remover{
+    background:#f0f0f0; color:var(--vermelho-preco); border:1px solid var(--vermelho-preco);
+    border-radius:50%; width:25px; height:25px; cursor:pointer; font-size: 0.8em; line-height: 23px;
+    padding: 0; margin-left: 10px; flex-shrink: 0;
+}
+.resumo-total{margin:15px 0;text-align:right;font-size:1.2em;border-top:1px solid #ddd;padding-top:10px}
+.formulario-pedido{border-top:2px solid var(--azul-claro);padding-top:20px;margin-top:15px}
+.formulario-pedido input{width:100%;padding:10px;margin-bottom:10px;border:1px solid #ccc;border-radius:4px}
+.btn-azul-escuro{background-color:var(--azul-principal);color:var(--branco);padding:10px 20px;border:none;border-radius:5px;width:100%;cursor:pointer;transition:background-color .3s}
+.btn-azul-escuro:hover{background-color:#0033a0}
+.btn-whatsapp-finalizar{background-color:var(--verde-whatsapp);color:var(--branco);padding:12px 20px;border:none;border-radius:5px;width:100%;cursor:pointer;font-size:1.1em;margin-top:10px}
+.btn-whatsapp-finalizar:hover{background-color:#1a7c47}
+.mensagem-status{text-align:center;margin-top:15px;font-weight:700}
+.texto-centralizado{text-align:center;color:#999}
+
+/* SNACKBAR NOTIFICAÇÃO - TOPO ESQUERDO */
+#notification-snackbar {
+    visibility: hidden; 
+    min-width: 250px;
+    background-color: var(--verde-whatsapp);
+    color: var(--branco);
+    text-align: center;
+    border-radius: 5px;
+    padding: 16px;
+    position: fixed;
+    z-index: 2000;
+    left: 20px; 
+    top: 20px; 
+    font-size: 1em;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: visibility 0s, opacity 0.5s linear;
+    opacity: 0;
+}
+#notification-snackbar.show { visibility: visible; opacity: 1; }
+
+/* --- NOVO CSS: BOTÃO FLUTUANTE DO WHATSAPP --- */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+.whatsapp-float a {
+    display: flex;
+    align-items: center;
+    background-color: var(--verde-whatsapp);
+    color: var(--branco);
+    padding: 10px 15px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1em;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+}
+.whatsapp-float a:hover {
+    background-color: #1a7c47; 
+    transform: translateY(-2px);
+}
+.whatsapp-float .fa-whatsapp {
+    font-size: 1.5em; 
+    margin-right: 8px;
+}
+/* --- FIM NOVO CSS --- */
+
+/* --- NOVO CSS PARA O FOOTER MAIS INTERESSANTE --- */
+.footer-azul{
+    background-color: var(--azul-principal);
+    color: var(--branco);
+    padding: 40px 0 0; 
+    width: 100%;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr; 
+    gap: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-col h4 {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 10px;
+}
+/* Linha decorativa nos títulos */
+.footer-col h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 50px;
+    background-color: var(--azul-claro);
+    border-radius: 2px;
+}
+
+/* Coluna de Informação */
+.footer-logo {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+.footer-info p {
+    margin-bottom: 8px;
+    font-size: 0.95em;
+    line-height: 1.4;
+}
+.contato-info p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.contato-info .fas, .contato-info .fab {
+    margin-right: 10px;
+    color: var(--azul-claro);
+    font-size: 1.1em;
+}
+
+/* Coluna de Links */
+.footer-links ul {
+    list-style: none;
+}
+.footer-links a {
+    color: var(--branco);
+    text-decoration: none;
+    font-size: 0.95em;
+    line-height: 2;
+    transition: color 0.3s;
+}
+.footer-links a:hover {
+    color: var(--azul-claro);
+    text-decoration: underline;
+}
+
+/* Coluna Newsletter */
+.footer-newsletter p {
+    margin-bottom: 15px;
+    font-size: 0.95em;
+}
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+}
+.newsletter-form input {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+.btn-newsletter {
+    background-color: var(--verde-whatsapp);
+    color: var(--branco);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    flex-shrink: 0;
+}
+.btn-newsletter:hover {
+    background-color: #1a7c47;
+}
+
+/* Ícones Sociais */
+.social-icons {
+    margin-top: 20px;
+}
+.social-icons a {
+    color: var(--branco);
+    font-size: 1.5em;
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+.social-icons a:hover {
+    color: var(--azul-claro);
+}
+
+/* Linha de Direitos Autorais */
+.footer-bottom {
+    padding: 15px 0;
+    font-size: 0.85em;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- INÍCIO DO CSS MOBILE (Media Query) --- */
+@media (max-width: 1199px) {
+    /* NOVO: REMOVE O MINI-BANNER EM TELAS ABAIXO DE 1200PX */
+    .mini-banner-area {
+        display: none;
+        height: 0;
+    }
+}
+
+@media (max-width: 768px) { 
+    .container { width: 95%; }
+
+    /* 1. Menu Hamburguer Visível */
+    .menu-hamburguer {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--branco);
+        font-size: 1.5em;
+        cursor: pointer;
+        padding: 0;
+        margin-right: 15px;
+        order: 0; 
+        text-shadow: 0 0 5px rgba(0,0,0,0.8);
+    }
+
+    /* 2. Layout do Header Azul em Mobile */
+    .header-azul .container {
+        flex-wrap: wrap; 
+        justify-content: space-between;
+        gap: 5px; 
+        justify-content: flex-start; 
+    }
+    
+    /* Logos maiores no mobile (tamanhos de imagem já ajustados na etapa anterior) */
+    .logo-distribuidora-nav {
+        height: 45px; 
+        margin-right: 5px;
+    }
+    .logo-kia-hyundai-nav {
+        height: 50px; 
+        margin-right: 10px;
+    }
+    
+    /* ESCONDE O TÍTULO DE TEXTO NO MOBILE */
+    .logo-text { 
+        display: none; 
+    } 
+
+    /* NOVO: A área do link de logo com as IMAGENS */
+    .logo-area-link { 
+        order: 3; 
+        flex-grow: 1; 
+        justify-content: flex-start;
+        margin-right: 5px; 
+    } 
+
+    .search-container { 
+        width: 100%; 
+        max-width: none; 
+        order: 5; 
+    }
+    .nav-acoes { 
+        order: 4; 
+    }
+    .btn-carrinho { 
+        width: auto; 
+        padding: 8px 12px; 
+    }
+
+
+    /* 3. Menu Principal (Novo-header) Transforma-se em Mobile */
+    .novo-header {
+        position: fixed;
+        top: 0;
+        left: -100%; 
+        width: 80%;
+        max-width: 300px;
+        height: 100%;
+        background-color: var(--branco);
+        z-index: 9999;
+        transition: left 0.4s ease-in-out;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+        border-bottom: none;
+        overflow-y: auto; 
+    }
+    /* Classe para mostrar o menu */
+    .novo-header.show-menu {
+        left: 0;
+    }
+
+    .novo-header .container {
+        padding: 0;
+        height: 100%;
+        align-items: flex-start;
+    }
+    .novo-header .main-nav ul {
+        flex-direction: column; 
+        padding: 60px 0 20px 0; 
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+    }
+    .novo-header .main-nav > ul > li {
+        margin: 0;
+        width: 100%;
+        border-bottom: 1px solid #eee;
+    }
+    .novo-header .main-nav a {
+        padding: 15px 20px;
+        justify-content: space-between; 
+        width: 100%;
+    }
+    
+    /* Submenu no Mobile */
+    .novo-header .main-nav ul ul {
+        position: static; 
+        display: none; 
+        box-shadow: none;
+        min-width: auto;
+        border-radius: 0;
+        padding: 0;
+        background-color: #f9f9f9; 
+        border-top: 1px solid #eee;
+    }
+    .novo-header .main-nav ul ul a {
+        padding: 10px 35px; 
+        font-size: 0.95em;
+    }
+
+    /* Efeito hover vira toggle/click no mobile */
+    .novo-header .main-nav > ul > li:hover > ul {
+        display: none; 
+    }
+    /* A seta não precisa girar no mobile, pois a abertura será via JS (toggle) */
+    .novo-header .main-nav > ul > li:hover > a .fa-chevron-down {
+        transform: none;
+    }
+
+    /* Outros ajustes mobile existentes */
+    .produtos-destaque { padding: 20px 0; }
+    .produtos-destaque h3 { font-size: 1.5em; margin-bottom: 20px; }
+    .grid-produtos { gap: 20px; }
+    .modal-content { margin: 5% auto; width: 95%; padding: 20px; }
+    .item-carrinho { flex-wrap: wrap; }
+    .item-carrinho span:nth-child(1) { flex: 1 1 100%; margin-bottom: 5px; margin-right: 0; font-size: 1em; }
+    .item-carrinho span:nth-child(2) { flex: 0 0 auto; text-align: left; order: 2; margin-right: 15px; min-width: auto; }
+    .item-carrinho strong { flex: 1 1 auto; text-align: right; min-width: 60px; order: 3; }
+    .item-carrinho .btn-remover { order: 4; margin-left: 10px; position: static; }
+    #notification-snackbar { left: 50%; transform: translateX(-50%); min-width: 90%; top: 15px; }
+    .mini-banner-area { height: 200px; }
+    .whatsapp-float {
+        right: 10px;
+        bottom: 10px;
+    }
+    .whatsapp-float a {
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+    
+    /* AJUSTE MOBILE PARA O FOOTER */
+    .footer-azul {
+        padding-top: 30px;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr; 
+        gap: 25px;
+        text-align: center; 
+        padding-bottom: 20px;
+    }
+    .footer-col h4 {
+        text-align: center;
+    }
+    .footer-col h4::after {
+        left: 50%;
+        transform: translateX(-50%); 
+    }
+    .contato-info p {
+        justify-content: center; 
+    }
+    .social-icons {
+        margin-top: 10px;
+        text-align: center;
+    }
+    .newsletter-form {
+        flex-direction: column; 
+    }
+    .newsletter-form button {
+        width: 100%;
+    }
+}
+/* --- FIM DO CSS MOBILE --- */
+</style>
+</head>
+<body>
+<div id="pagina-container">
+<header class="header-azul">
+<div class="container">
+    <button id="menu-hamburguer" class="menu-hamburguer">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <a class='logo-area-link' href='/'>
+        <img src="https://i.imgur.com/FqLldYF.png" alt="Logo Distribuidora" class="logo-distribuidora-nav">
+        <img src="https://i.imgur.com/ryTmHRs.png" alt="Logo Kia & Hyundai" class="logo-kia-hyundai-nav">
+        <h1 class="logo-text">Distribuidora de peças Kia & Hyundai</h1>
+    </a>
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Buscar por nome ou modelo...">
+    </div>
+    
+    <div class="nav-acoes">
+        <button id="abrir-carrinho" class="btn-carrinho">
+            <i class="fas fa-shopping-cart"></i> Carrinho (<span id="contador-carrinho">0</span>)
+        </button>
+    </div>
+</div>
+</header>
+
+<header class="novo-header" id="menu-mobile-container">
+    <div class="container">
+        <nav class="main-nav" id="menu-mobile">
+            <ul>
+                <li><a href='/quemsomos'>Quem Somos</a></li>
+                <li class="has-submenu">
+                    <a href="#">Produtos <i class="fas fa-chevron-down"></i></a>
+                    <ul class="submenu">
+                        <li><a href="#" onclick="filterByBrand('Hyundai'); return false;">Hyundai</a></li>
+                        <li><a href="#" onclick="filterByBrand('Kia'); return false;">Kia</a></li>
+                    </ul>
+                </li>
+                <li><a href='/noticias'>Notícias</a></li>
+                <li class="has-submenu">
+                    <a href="#">Contato <i class="fas fa-chevron-down"></i></a>
+                    <ul class="submenu">
+                        <li><a href="https://api.whatsapp.com/send?phone=5511960720059&text=Ol%C3%A1%2C%20preciso%20de%20ajuda%20com%20pe%C3%A7as%20para%20Hyundai%20e%20Kia." target="_blank">Fale Conosco</a></li>
+                        <li><a href="#">Localização</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="https://api.whatsapp.com/send?phone=5511960720059&text=Ol%C3%A1%2C%20preciso%20de%20ajuda%20com%20pe%C3%A7as%20para%20Hyundai%20e%20Kia." target="_blank" style="color: var(--azul-claro); font-weight: 700;">
+                        Solicite seu Orçamento
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<section class="mini-banner-area">
+    <div id="banner-slider">
+        <div class="banner-slide">
+            <img src="https://i.imgur.com/GiUIDMZ.png" alt="Banner Hyundai">
+        </div>
+        <div class="banner-slide">
+            <img src="https://i.imgur.com/zv9RrkO.png" alt="Banner Kia">
+        </div>
+        <div class="banner-slide">
+            <img src="https://i.imgur.com/UH5prN2.png" alt="Banner Peças">
+        </div>
+    </div>
+</section>
+<main id="conteudo-principal">
+<section id="produtos" class="produtos-destaque container">
+<h3>Peças em Destaque</h3>
+<div class="grid-produtos" id="lista-produtos"></div>
+</section>
+</main>
+<div id="modal-carrinho" class="modal">
+<div class="modal-content">
+<span class="fechar-modal">&times;</span>
+<h4>Seu Carrinho de Pedidos</h4>
+<div id="itens-carrinho">
+<p id="carrinho-vazio" class="texto-centralizado">O carrinho está vazio.</p>
+</div>
+<div class="resumo-total">
+<strong>Total:</strong> <span id="valor-total">R$ 0,00</span>
+</div>
+<div id="formulario-pedido" class="formulario-pedido" style="display:none;">
+<h5>Detalhes para Envio do Pedido via WhatsApp</h5>
+<input type="text" id="campo-nome" placeholder="Seu Nome Completo" required>
+<input type="tel" id="campo-whatsapp" placeholder="Seu WhatsApp (apenas números)" required>
+<button id="finalizar-whatsapp" class="btn-whatsapp-finalizar">
+<i class="fab fa-whatsapp"></i> Enviar Pedido para Atendente
+</button>
+<p id="mensagem-status" class="mensagem-status"></p>
+</div>
+<button id="btn-iniciar-pedido" class="btn-azul-escuro" style="margin-top:15px;">
+Finalizar Pedido
+</button>
+</div>
+</div>
+
+<div id="detalhes-produto-modal" class="modal">
+    <div class="modal-content">
+        <span class="fechar-modal" onclick="fecharDetalhesProdutoModal()">&times;</span>
+        <h3 style="color:var(--azul-principal); margin-bottom: 20px;">Detalhes do Produto</h3>
+        <div id="detalhes-produto-body">
+            </div>
+    </div>
+</div>
+<footer class="footer-azul">
+    <div class="container footer-grid">
+        <div class="footer-col footer-info">
+            <h4 class="footer-logo">Distribuidora Kia & Hyundai</h4>
+            <p>Especialistas em peças originais e de reposição para sua Kia e Hyundai.</p>
+            
+            <div class="contato-info">
+                <p><i class="fab fa-whatsapp"></i>(11) 96072-0059</p>
+                <p><i class="fas fa-envelope"></i> contatodistribuidoracaoa@gmail.com</p>
+            </div>
+
+        </div>
+
+        <div class="footer-col footer-links">
+            <h4>Navegação Rápida</h4>
+            <ul>
+                <li><a href='/quemsomos'>Quem Somos</a></li>
+                <li><a href="#" onclick="filterByBrand('Hyundai'); return false;">Peças Hyundai</a></li>
+                <li><a href="#" onclick="filterByBrand('Kia'); return false;">Peças Kia</a></li>
+                <li><a href='/noticias'>Notícias e Dicas</a></li>
+                <li><a href="#">Política de Privacidade</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col footer-newsletter">
+            <h4>Receba Nossas Novidades</h4>
+            <p>Inscreva-se e receba promoções exclusivas e dicas de manutenção.</p>
+            <form action="#" method="post" class="newsletter-form">
+                <input type="email" placeholder="Seu E-mail" required>
+                <button type="submit" class="btn-newsletter">Inscrever</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2025 Distribuidora Kia & Hyundai. Todos os direitos reservados.</p>
+        </div>
+    </div>
+</footer>
+</div>
+
+<div id="notification-snackbar"></div>
+
+<div class="whatsapp-float">
+    <a href="https://api.whatsapp.com/send?phone=5511960720059&text=Ol%C3%A1%2C%20preciso%20de%20ajuda%20com%20pe%C3%A7as%20para%20Hyundai%20e%20Kia." target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        Solicitar Orçamento
+    </a>
+</div>
+<script>
+
+const catalogoPecas=[
+// Campo 'descricaoCompleta' adicionado a cada produto
+{id: 101, nome: "Amortecedor dianteiro Mando", preco: 899.99, modelo: "Kia Sportage", estoque: 50, imagem_url: "https://images.tcdn.com.br/img/img_prod/712470/par_amortecedor_dianteiro_cadenza_3_5_v6_2011_allen_6631_1_28608f5825ac43863a3a1b11830d90e4.jpg", descricaoCompleta: "Amortecedor dianteiro de alta performance da marca Mando, específico para Kia Sportage. Garante máxima estabilidade e conforto. Peça de reposição original de qualidade."},
+{id: 102, nome: "Amortecedor traseiro Nakata", preco: 480.00, modelo: "Kia Sportage", estoque: 50, imagem_url: "https://cdn.awsli.com.br/600x450/2592/2592224/produto/224292943/amortecedor-traseiro-kia-sportage-hyundai-ix35-nakata-hg41054-wszy4bjx9d.jpg", descricaoCompleta: "Amortecedor traseiro da marca Nakata, compatível com Kia Sportage. Excelente absorção de impacto e durabilidade. Ideal para manutenção preventiva e corretiva."},
+{id: 103, nome: "Caixa de direção Mando", preco: 1299.00, modelo: "Hyundai I30", estoque: 32, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_874395-MLB89882846253_082025-O.webp", descricaoCompleta: "Caixa de direção completa da marca Mando, para Hyundai I30. Essencial para o sistema de direção, oferecendo precisão e segurança. Peça nova e com garantia."},
+{id: 104, nome: "Bomba de direção hidráulica", preco: 910.00, modelo: "Kia Sorento 2.4", estoque: 21, imagem_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsIPAEGjP5tee_vLyJ11bKevw_lNPteSnSXQ&s", descricaoCompleta: "Bomba de direção hidráulica de alto fluxo para Kia Sorento 2.4. Restaura a leveza e a precisão da direção. Componente robusto e confiável."},
+{id: 105, nome: "Amortecedor dianteiro Mando", preco: 1180.00, modelo: "Hyundai Santa Fé", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_993608-MLB72668048512_112023-F.webp", descricaoCompleta: "Par de amortecedores dianteiros Mando para Hyundai Santa Fé. Desempenho superior e resistência em todas as condições de estrada."},
+{id: 106, nome: "Amortecedor traseiro Mando", preco: 2430.00, modelo: "Hyundai Santa Fé", estoque: 21, imagem_url: "https://images.tcdn.com.br/img/img_prod/946974/180_jogo_amortecedor_traseiro_hyundai_santa_fe_2012_ate_2014_24213_1_f8e3f8ce4ac5c2b0c54785d1b1a9c67d.jpg", descricaoCompleta: "Amortecedor traseiro (par) Mando para Hyundai Santa Fé. Peça de reposição que garante o conforto original do veículo. Importado com selo de qualidade."},
+{id: 107, nome: "Kit buchas suspensão traseira", preco: 630.00, modelo: "Hyundai X35, Kia Sportage", estoque: 21, imagem_url: "https://www.130rparts.com.br/cdn/shop/files/KIT_BUCHAS_TRAS_TUCSON_2.0_5fc366f8-fb41-48ec-935f-0f1a3fb57430_1080x.png?v=1748533770", descricaoCompleta: "Kit completo de buchas para suspensão traseira. Compatível com Hyundai IX35 e Kia Sportage. Melhora a estabilidade e elimina ruídos na suspensão."},
+{id: 108, nome: "Bandeja dianteira esquerda Azera", preco: 340.00, modelo: "Hyundai Azera", estoque: 21, imagem_url: "https://images.tcdn.com.br/img/img_prod/712470/bandeja_dianteira_esquerda_azera_3_0_v6_2011_8691_1_e05b3c016d6ec320388963e8dccdc9f8.jpg", descricaoCompleta: "Bandeja de suspensão dianteira, lado esquerdo, para Hyundai Azera. Inclui pivô e buchas. Produto de alta resistência e durabilidade."},
+{id: 109, nome: "Bandeja dianteira superior esquerda Azera", preco: 180.00, modelo: "Hyundai Azera", estoque: 21, imagem_url: "https://cdn.awsli.com.br/2500x2500/2592/2592224/produto/224292628/bandeja-dianteira-superior-esquerdo-hyundai-azera-2008-a-2011-nakata-nbj9006ep-givt9sghpr.jpg", descricaoCompleta: "Bandeja superior dianteira, lado esquerdo, para Hyundai Azera. Peça crucial para o alinhamento da roda. Qualidade de montadora."},
+{id: 110, nome: "Pivô dianteiro original Kia Cerato", preco: 149.00, modelo: "Kia Cerato", estoque: 21, imagem_url: "https://www.130rparts.com.br/cdn/shop/files/PVO1001_1080x.png?v=1749588601", descricaoCompleta: "Pivô de suspensão dianteira, peça original para Kia Cerato. Essencial para a segurança e dirigibilidade. Certificado de procedência."},
+{id: 111, nome: "Kit pastilhas de freio dianteira", preco: 249.00, modelo: "Hyundai Santa Fé/Kia Sorento", estoque: 21, imagem_url: "https://www.130rparts.com.br/cdn/shop/files/SP1690_d56d0b71-0c3b-47cb-aa25-3af091031ce9_1563x.png?v=1748532342", descricaoCompleta: "Kit completo de pastilhas de freio dianteiras. Alto poder de frenagem e baixo ruído. Compatível com Hyundai Santa Fé e Kia Sorento."},
+{id: 112, nome: "Kit pastilhas de freio traseira", preco: 175.00, modelo: "Hyundai Santa Fé/Kia Sorento", estoque: 21, imagem_url: "https://www.130rparts.com.br/cdn/shop/files/SP1247_0c333f7a-2a9f-4020-a1ed-f5d1e2e9d0c3_1563x.png?v=1748532220", descricaoCompleta: "Kit completo de pastilhas de freio traseiras. Material de alta fricção que garante segurança. Compatível com Hyundai Santa Fé e Kia Sorento."},
+{id: 113, nome: "Cabeçote do motor", preco: 2180.00, modelo: "Hyundai HB20 1.0 3CC 2018", estoque: 21, imagem_url: "https://images.tcdn.com.br/img/img_prod/1228990/cabecote_compativel_hyundai_hb20_1_0_3cc_2018_6469_2_93f9e20f9d3d527f6abe9645c335092d.jpeg", descricaoCompleta: "Cabeçote do motor Hyundai HB20 1.0 3 cilindros, ano 2018. Peça em ótimo estado, ideal para reposição original e compatível com motores 1.0 3CC"},
+{id: 114, nome: "KIT 16 BUCHAS SUSP TRASEIRA", preco: 415.00, modelo: "Hyundai Santa Fé 2008/12", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_664310-MLB89591499314_082025-F.webp", descricaoCompleta: "Kit com 16 buchas de suspensão traseira. Peças novas, ideais para reposição e garantir mais estabilidade e segurança na condução"},
+{id: 115, nome: "Kit Completo Suspensão Dianteira Hyundai Santa Fé 3.3", preco: 1180.00, modelo: "Hyundai Santa Fé 3.3 2013-2022", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_747512-MLB94042752945_102025-F.webp", descricaoCompleta: "Kit Completo para Suspensão Dianteira do Hyundai Santa Fé com motor 3.3, compatível com os anos de 2013 a 2022. Peça de reposição de qualidade."},
+{id: 116, nome: "Molas Reforçadas Gnv - Kia Sportage 2016", preco: 430.00, modelo: "Kia Sportage 2016", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_792394-MLB72888908796_112023-F-molas-reforcadas-gnv-kia-sportage-2016.webp", descricaoCompleta: "Par de Molas Traseiras Reforçadas para GNV (Gás Natural Veicular) da Kia Sportage, ano 2016. Ideais para compensar o peso adicional do cilindro de GNV e manter a altura original do veículo. Compatível com modelos de 2011 a 2016."},
+{id: 117, nome: "Par Bieleta Dianteira E Traseira", preco: 440.00, modelo: "Hyundai IX35 / Kia Sportage 2010-2016", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_866440-MLB80424460507_112024-F.webp", descricaoCompleta: "Kit contendo 02 pares de bieletas (dianteiras e traseiras) de suspensão. Compatível com Hyundai IX35 e Kia Sportage dos anos 2010 a 2016. Peças de origem Coreana (Korea)."},
+{id: 118, nome: "Kit Batente Dianteiro Traseiro", preco: 730.00, modelo: "Kia Sportage / Hyundai IX35 2010-2012", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_836459-MLB81240830522_122024-F.webp", descricaoCompleta: "Kit completo de batentes de suspensão (dianteiro e traseiro) para Kia Sportage e Hyundai IX35, compatível com os anos 2010, 2011 e 2012. Essencial para a absorção de impactos e durabilidade dos amortecedores."},
+{id: 119, nome: "Kit 4 Coxim Motor", preco: 1180.00, modelo: "Hyundai Santa Fe 2.4 / Kia Sorento", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_925126-MLB79143546942_092024-F.webp", descricaoCompleta: "Kit com 4 coxins (suportes) originais para o motor. Compatível com Hyundai Santa Fe 2.4 e Kia Sorento. Peças essenciais para reduzir a vibração do motor e garantir o alinhamento."},
+{id: 120, nome: "Kit 4 Amortecedor Nakata + Kit", preco: 1290.00, modelo: "Hyundai Vera Cruz 2007-2010", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_915493-MLB78663480740_092024-F.webp", descricaoCompleta: "Kit com 4 amortecedores da marca Nakata, mais o kit de instalação/reparo (batentes, coifas, etc.). Compatível com Hyundai Vera Cruz dos anos 2007, 2008, 2009 e 2010."},
+{id: 121, nome: "Kit Corrente Para Ix35 Elantra Tucson Sportage", preco: 890.00, modelo: "IX35 / Elantra / Tucson / Sportage", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_749891-MLB80055678496_102024-F-kit-corrente-para-ix35-elantra-tucson-sportage.webp", descricaoCompleta: "Kit completo de corrente de comando para motores. Compatível com Hyundai IX35, Elantra, Tucson e Kia Sportage."},
+{id: 122, nome: "Kit Corrente + 4 Polias Vvt Original", preco: 2799.90, modelo: "Hyundai Azera / Santa Fé / Veracruz / Kia Cadenza", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_983250-MLB87713604282_072025-F.webp", descricaoCompleta: "Kit Corrente + 4 Polias Vvt original. Compatível com Hyundai Azera, Santa Fé, Veracruz e Kia Cadenza."},
+{id: 123, nome: "Pastilha Freio Traseira Syl Original", preco: 130.00, modelo: "HYUNDAI Santa Fé / KIA Sorento Equus 2007-2024", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_960263-MLB76065329698_052024-F.webp", descricaoCompleta: "Pastilha de freio traseira Syl original. Compatível com Hyundai Santa Fé e Kia Sorento Equus de 2007 a 2024."},
+{id: 124, nome: "Par Kit Amortecedor Dianteiro Traseiro", preco: 1830.00, modelo: "IX35 2010 2011 a 2015", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_724625-MLB89470203819_082025-F.webp", descricaoCompleta: "Par Kit Amortecedor dianteiro traseiro compatível com IX35 de 2010 a 2015. Produto de alta qualidade."},
+{id: 125, nome: "Sensor de Rotação", preco: 250.00, modelo: "Hyundai Santa Fé / Hyundai Azera / Sorento 3.3 3.8 V6", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_746491-MLB77545812259_072024-F.webp", descricaoCompleta: "Sensor de rotação compatível com Hyundai Santa Fé, Hyundai Azera e Sorento 3.3 / 3.8 V6. Produto de alta durabilidade e precisão."},
+{id: 126, nome: "Bomba Direção Hidráulica", preco: 590.00, modelo: "Hyundai Azera 3.3 até 2011", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_969658-MLB80026911618_102024-F.webp", descricaoCompleta: "Bomba de direção hidráulica compatível com Hyundai Azera 3.3 até o ano de 2011. Produto de alta qualidade e excelente desempenho."},
+{id: 127, nome: "Caixa Direção Hidráulica", preco: 2240.00, modelo: "Kia Sorento 2.4 2011 a 2018", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_988721-MLB90387520646_082025-F.webp", descricaoCompleta: "Caixa de direção hidráulica compatível com Kia Sorento 2.4 de 2011 a 2018. Produto de alta durabilidade e desempenho confiável."},
+{id: 128, nome: "Caixa Direção Elétrica", preco: 1340.00, modelo: "Hyundai Santa Fé 3.3 2014 a 2019", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_874030-MLB83087300197_032025-F.webp", descricaoCompleta: "Caixa de direção elétrica compatível com Hyundai Santa Fé 3.3 de 2014 a 2019. Produto de alta qualidade e excelente desempenho."},
+{id: 129, nome: "Bomba Direção Hidráulica", preco: 640.00, modelo: "Hyundai Vera Cruz 3.8 Todos 57100-3J000", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_863542-MLB43344836995_092020-F.webp", descricaoCompleta: "Bomba de direção hidráulica compatível com Hyundai Vera Cruz 3.8. Código 57100-3J000. Produto de alta durabilidade e desempenho confiável."},
+
+
+]
+
+let carrinho=[];
+const listaProdutosEl=document.getElementById('lista-produtos');
+const contadorCarrinhoEl=document.getElementById('contador-carrinho');
+const modalCarrinhoEl=document.getElementById('modal-carrinho');
+const itensCarrinhoEl=document.getElementById('itens-carrinho');
+const valorTotalEl=document.getElementById('valor-total');
+const carrinhoVazioEl=document.getElementById('carrinho-vazio');
+const formularioPedidoEl=document.getElementById('formulario-pedido');
+const btnIniciarPedidoEl=document.getElementById('btn-iniciar-pedido');
+const btnFinalizarWhatsAppEl=document.getElementById('finalizar-whatsapp');
+const mensagemStatusEl=document.getElementById('mensagem-status');
+const notificationSnackbarEl=document.getElementById('notification-snackbar');
+const searchInputEl = document.getElementById('search-input'); 
+const bannerSliderEl = document.getElementById('banner-slider'); 
+
+// Variáveis do Banner Slider
+let currentSlide = 0;
+const totalSlides = 3; 
+
+// Variáveis do Menu Mobile
+const menuHamburguerEl = document.getElementById('menu-hamburguer');
+const menuMobileContainerEl = document.getElementById('menu-mobile-container');
+const submenuLinks = document.querySelectorAll('#menu-mobile .has-submenu > a');
+
+function showNotification(message) {
+    notificationSnackbarEl.classList.remove('show');
+    notificationSnackbarEl.innerHTML = message;
+    notificationSnackbarEl.classList.add('show');
+    
+    setTimeout(() => {
+        notificationSnackbarEl.classList.remove('show');
+    }, 4000); 
+}
+
+function startBannerSlider() {
+    // A função de slider só precisa ser executada se o banner estiver visível
+    if(window.innerWidth >= 1200) {
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            const offset = -currentSlide * 100;
+            bannerSliderEl.style.transform = `translateX(${offset}%)`;
+        }, 3000); 
+    }
+}
+
+function carregarProdutos(){
+listaProdutosEl.innerHTML=catalogoPecas.map(p=>`
+<div class="produto-card" data-id="${p.id}" data-nome="${p.nome.toLowerCase()}" data-modelo="${p.modelo.toLowerCase()}">
+<img src="${p.imagem_url}" alt="${p.nome}">
+<h4>${p.nome}</h4>
+<p>Aplicação: ${p.modelo}</p>
+<p class="preco">R$ ${p.preco.toFixed(2).replace('.',',')}</p>
+<button class="btn-adicionar" data-id="${p.id}" data-nome="${p.nome}" data-preco="${p.preco}" data-modelo="${p.modelo}">
+Adicionar ao Carrinho
+</button>
+</div>
+`).join('');
+document.querySelectorAll('.btn-adicionar').forEach(b=>b.addEventListener('click',adicionarAoCarrinho));
+}
+
+
+// Função que filtra por marca, limpando a busca por texto
+function filterByBrand(brand) {
+    searchInputEl.value = ''; 
+    filterProducts(brand); 
+    // Fechar menu mobile se estiver aberto após clique
+    if (window.innerWidth <= 768) {
+         menuMobileContainerEl.classList.remove('show-menu');
+    }
+}
+
+// Função de filtro unificada (para busca por texto e marca)
+function filterProducts(filterTermOrBrand = null) {
+    const filterValue = filterTermOrBrand ? filterTermOrBrand.toLowerCase().trim() : searchInputEl.value.toLowerCase().trim();
+    const cards = document.querySelectorAll('.produto-card');
+
+    cards.forEach(card => {
+        const nome = card.dataset.nome;
+        const modelo = card.dataset.modelo;
+        
+        if (filterValue === '') {
+            card.classList.remove('hidden');
+            return;
+        }
+
+        if (nome.includes(filterValue) || modelo.includes(filterValue)) {
+            card.classList.remove('hidden');
+        } else {
+            card.classList.add('hidden');
+        }
+    });
+}
+
+
+function renderizarCarrinho(){
+itensCarrinhoEl.innerHTML='';
+let total=0;
+if(carrinho.length===0){
+carrinhoVazioEl.style.display='block';
+btnIniciarPedidoEl.disabled=true;
+}else{
+carrinhoVazioEl.style.display='none';
+btnIniciarPedidoEl.disabled=false;
+carrinho.forEach(item=>{
+const subtotal=item.preco*item.quantidade;
+total+=subtotal;
+const itemEl=document.createElement('div');
+itemEl.classList.add('item-carrinho');
+itemEl.innerHTML=`
+<span>${item.nome} (${item.modelo})</span>
+<span>${item.quantidade}x</span>
+<strong>R$ ${subtotal.toFixed(2).replace('.',',')}</strong>
+<button class="btn-remover" data-id="${item.id}">&times;</button>
+`;
+itensCarrinhoEl.appendChild(itemEl);
+});
+itensCarrinhoEl.querySelectorAll('.btn-remover').forEach(b=>b.addEventListener('click',removerDoCarrinho));
+}
+valorTotalEl.textContent=`R$ ${total.toFixed(2).replace('.',',')}`;
+contadorCarrinhoEl.textContent=carrinho.reduce((a,i)=>a+i.quantidade,0);
+}
+function adicionarAoCarrinho(e){
+const id=parseInt(e.target.dataset.id);
+const nome=e.target.dataset.nome;
+const preco=parseFloat(e.target.dataset.preco);
+const modelo=e.target.dataset.modelo;
+
+const itemExistente=carrinho.find(i=>i.id===id);
+if(itemExistente){
+itemExistente.quantidade++;
+}else{
+carrinho.push({id,nome,preco,quantidade:1,modelo});
+}
+renderizarCarrinho();
+showNotification(`<i class="fas fa-check-circle"></i> ${nome} adicionado ao carrinho!`);
+}
+function removerDoCarrinho(e){
+const id=parseInt(e.target.dataset.id);
+const index=carrinho.findIndex(i=>i.id===id);
+if(index!==-1){
+const item=carrinho[index];
+item.quantidade--;
+if(item.quantidade<=0){
+carrinho.splice(index,1);
+}
+}
+renderizarCarrinho();
+}
+function finalizarPedidoWhatsApp(e){
+e.preventDefault();
+const clienteNome=document.getElementById('campo-nome').value.trim();
+const clienteWhatsapp=document.getElementById('campo-whatsapp').value.replace(/[^0-9]/g,'');
+if(!clienteNome||clienteWhatsapp.length<10){
+mensagemStatusEl.style.color='red';
+mensagemStatusEl.textContent='Preencha seu nome e um número de WhatsApp válido (com DDD).';
+return;
+}
+const valorTotal=carrinho.reduce((a,i)=>a+(i.preco*i.quantidade),0);
+const itensMensagem=carrinho.map((i,idx)=>
+`*${idx+1}.* ${i.nome} (${i.modelo})\n    *Qtde:* ${i.quantidade} | *Subtotal:* R$ ${(i.preco*i.quantidade).toFixed(2).replace('.',',')}`
+).join('\n');
+const mensagemWhatsapp=encodeURIComponent(
+`*NOVO PEDIDO DE PEÇAS - Distribuidora Kia & Hyundai (VIA SITE)*\n\n`+
+`*Cliente:* ${clienteNome}\n`+
+`*WhatsApp:* ${clienteWhatsapp}\n\n`+
+`*ITENS DO PEDIDO:*\n${itensMensagem}\n\n`+
+`*TOTAL GERAL ESTIMADO:* R$ ${valorTotal.toFixed(2).replace('.',',')}\n\n`+
+`*Atenção:* Por favor, confirme o estoque, o valor e calcule o frete para o cliente.`
+);
+const numeroAtendente='5511960720059';
+const linkWhatsApp=`https://api.whatsapp.com/send?phone=${numeroAtendente}&text=${mensagemWhatsapp}`;
+mensagemStatusEl.style.color='green';
+mensagemStatusEl.textContent='Pedido pronto! Abrindo o WhatsApp em instantes...';
+btnFinalizarWhatsAppEl.disabled=true;
+setTimeout(()=>{
+window.open(linkWhatsApp,'_blank');
+carrinho=[];
+renderizarCarrinho();
+modalCarrinhoEl.style.display='none';
+btnFinalizarWhatsAppEl.disabled=false;
+document.getElementById('campo-nome').value='';
+document.getElementById('campo-whatsapp').value='';
+mensagemStatusEl.textContent='';
+},2000);
+}
+
+// ADICIONADO: Funções para o Modal de Detalhes do Produto
+
+function fecharDetalhesProdutoModal() {
+    document.getElementById('detalhes-produto-modal').style.display = 'none';
+}
+
+function abrirDetalhesProdutoModal(produtoId) {
+    // Busca o produto no catálogo usando o ID
+    const produto = catalogoPecas.find(p => p.id === produtoId);
+
+    if (produto) {
+        const modalContentBody = document.getElementById('detalhes-produto-body');
+        
+        // Cria o HTML de detalhes do produto
+        modalContentBody.innerHTML = `
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img src="${produto.imagem_url}" alt="${produto.nome}" style="max-width: 100%; max-height: 250px; object-fit: contain; border-radius: 5px;">
+            </div>
+            <h4 style="color: var(--azul-principal); font-size: 1.5em; margin-bottom: 5px;">${produto.nome}</h4>
+            <p style="color: #666; margin-bottom: 15px;">Aplicação: ${produto.modelo}</p>
+            <strong style="font-size: 1.6em; color: var(--vermelho-preco); display: block; margin-bottom: 20px;">R$ ${produto.preco.toFixed(2).replace('.', ',')}</strong>
+            
+            <h5 style="color: var(--azul-principal); margin-bottom: 10px;">Descrição Detalhada:</h5>
+            <p style="margin-bottom: 20px; line-height: 1.5; font-size: 0.95em;">${produto.descricaoCompleta}</p>
+            
+            <button class="btn-adicionar" data-id="${produto.id}" data-nome="${produto.nome}" data-preco="${produto.preco}" data-modelo="${produto.modelo}" style="margin-top: 10px;" onclick="adicionarAoCarrinho(event); fecharDetalhesProdutoModal();">
+                <i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho
+            </button>
+        `;
+
+        document.getElementById('detalhes-produto-modal').style.display = 'block';
+    }
+}
+
+function adicionarListenersDetalheProduto() {
+    // Adiciona o evento de clique a todos os cartões de produto
+    document.querySelectorAll('.produto-card').forEach(card => {
+        card.addEventListener('click', function(event) {
+            // Verifica se o clique não foi diretamente no botão "Adicionar ao Carrinho"
+            if (!event.target.classList.contains('btn-adicionar') && !event.target.closest('.btn-adicionar')) {
+                const produtoId = parseInt(this.getAttribute('data-id'));
+                if (!isNaN(produtoId)) {
+                    abrirDetalhesProdutoModal(produtoId);
+                }
+            }
+        });
+    });
+    
+    // Permite fechar o modal ao clicar fora dele (no overlay)
+    const modal = document.getElementById('detalhes-produto-modal');
+    modal.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            fecharDetalhesProdutoModal();
+        }
+    });
+
+    // Reutiliza o listener para fechar o modal ao clicar no X
+    document.querySelectorAll('#detalhes-produto-modal .fechar-modal').forEach(span => {
+        span.onclick = fecharDetalhesProdutoModal;
+    });
+}
+// FIM ADICIONADO: Funções para o Modal de Detalhes do Produto
+
+
+// Inicialização de Listeners
+document.getElementById('abrir-carrinho').addEventListener('click',()=>{
+modalCarrinhoEl.style.display='block';
+formularioPedidoEl.style.display='none';
+btnIniciarPedidoEl.style.display='block';
+});
+document.querySelector('.fechar-modal').addEventListener('click',()=>{
+modalCarrinhoEl.style.display='none';
+});
+window.addEventListener('click',e=>{
+if(e.target===modalCarrinhoEl){
+modalCarrinhoEl.style.display='none';
+}
+});
+btnIniciarPedidoEl.addEventListener('click',()=>{
+if(carrinho.length>0){
+formularioPedidoEl.style.display='block';
+btnIniciarPedidoEl.style.display='none';
+mensagemStatusEl.textContent='';
+}else{
+alert('Seu carrinho está vazio. Adicione peças primeiro!');
+}
+});
+btnFinalizarWhatsAppEl.addEventListener('click',finalizarPedidoWhatsApp);
+searchInputEl.addEventListener('keyup', () => filterProducts(searchInputEl.value)); 
+
+
+// --- JS PARA MENU MOBILE (Novo) ---
+
+// 1. Função de Toggle do Menu Mobile
+menuHamburguerEl.addEventListener('click', () => {
+    menuMobileContainerEl.classList.toggle('show-menu');
+});
+
+// 2. Fechar o Menu Mobile ao clicar fora (simples)
+document.addEventListener('click', (e) => {
+    if (menuMobileContainerEl.classList.contains('show-menu') && 
+        !menuMobileContainerEl.contains(e.target) && 
+        e.target !== menuHamburguerEl && 
+        !menuHamburguerEl.contains(e.target)) {
+        
+        menuMobileContainerEl.classList.remove('show-menu');
+    }
+});
+
+// 3. Função de Toggle dos Sub-Menus no Mobile (clique)
+submenuLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        // Verifica se a tela é mobile
+        if (window.innerWidth <= 768) {
+            e.preventDefault(); 
+            const submenu = link.nextElementSibling;
+            
+            // Toggle do submenu clicado
+            if (submenu && submenu.classList.contains('submenu')) {
+                if (submenu.style.display === 'block') {
+                    submenu.style.display = 'none';
+                    link.querySelector('.fa-chevron-down').style.transform = 'none';
+                } else {
+                    // Fecha todos os outros submenus abertos
+                    document.querySelectorAll('#menu-mobile .submenu').forEach(sub => {
+                        if (sub !== submenu) {
+                            sub.style.display = 'none';
+                        }
+                    });
+                    
+                    submenu.style.display = 'block';
+                    link.querySelector('.fa-chevron-down').style.transform = 'rotate(180deg)';
+                }
+            }
+        }
+    });
+});
+
+
+// Inicializa o site
+carregarProdutos();
+renderizarCarrinho();
+startBannerSlider();
+
+// ADICIONADO: Inicializa os listeners para o clique no produto
+adicionarListenersDetalheProduto();
+</script>
+</body>
+</html>
