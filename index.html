@@ -1,15 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<link rel="icon" type="image/x-icon" href="https://i.imgur.com/CIstRaz.png">
+<link rel="icon" type="image/x-icon" href="https://i.imgur.com/CIstRaz.png"> <!-- Manter o favicon original ou buscar um da Moura -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Distribuidora Kia & Hyundai - Peças Hyundai & Kia</title>
+<title>Baterias Moura - Distribuidor Oficial</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
-:root{--azul-principal:#3d4d9d;--azul-claro:#007bff;--branco:#fff;--cinza-fundo:#f4f6f9;--verde-whatsapp:#309716;--vermelho-preco:#d9534f; --cor-menu-texto: #333; --cor-menu-hover: #004a99; --cor-submenu-fundo: #fff;}
+:root{--azul-principal:#004a99;--azul-claro:#007bff;--branco:#fff;--cinza-fundo:#f4f6f9;--verde-whatsapp:#309716;--vermelho-preco:#d9534f; --cor-menu-texto: #333; --cor-menu-hover: #004a99; --cor-submenu-fundo: #fff;}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
 body{background-color:var(--cinza-fundo);line-height:1.6}
 .container{width:90%;max-width:1200px;margin:0 auto}
@@ -213,7 +212,7 @@ body{background-color:var(--cinza-fundo);line-height:1.6}
     /* === MOBILE: ADICIONA A IMAGEM DE FUNDO E O FADE === */
     .header-azul{
         /* Mobile: Adiciona a imagem de fundo */
-        background-image: url('https://img0.icarros.com/dbimg/imgnoticia/4/23112_1');
+        background-image: url('https://i.imgur.com/v8w7x7x.png'); /* Nova imagem de fundo Moura */
         background-size: cover; 
         background-position: center; 
         padding: 20px 0; /* Padding ajustado para mobile */
@@ -333,172 +332,118 @@ body{background-color:var(--cinza-fundo);line-height:1.6}
 }
 .item-carrinho span:nth-child(1) { flex: 3; margin-right: 15px; font-size: 0.95em; min-width: 120px;}
 .item-carrinho span:nth-child(2) { flex: 0 0 40px; text-align: center; font-weight: bold;}
-.item-carrinho strong { flex: 1; text-align: right; min-width: 70px; font-size: 1em;}
-.item-carrinho .btn-remover{
-    background:#f0f0f0; color:var(--vermelho-preco); border:1px solid var(--vermelho-preco);
-    border-radius:50%; width:25px; height:25px; cursor:pointer; font-size: 0.8em; line-height: 23px;
-    padding: 0; margin-left: 10px; flex-shrink: 0;
+.item-carrinho strong { flex: 1; text-align: right; min-width: 60px;}
+.item-carrinho .btn-remover {
+    background: none;
+    border: none;
+    color: #aaa;
+    font-size: 1.2em;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 5px;
+    line-height: 1;
 }
-.resumo-total{margin:15px 0;text-align:right;font-size:1.2em;border-top:1px solid #ddd;padding-top:10px}
-.formulario-pedido{border-top:2px solid var(--azul-claro);padding-top:20px;margin-top:15px}
-.formulario-pedido input{width:100%;padding:10px;margin-bottom:10px;border:1px solid #ccc;border-radius:4px}
-.btn-azul-escuro{background-color:var(--azul-principal);color:var(--branco);padding:10px 20px;border:none;border-radius:5px;width:100%;cursor:pointer;transition:background-color .3s}
-.btn-azul-escuro:hover{background-color:#0033a0}
-.btn-whatsapp-finalizar{background-color:var(--verde-whatsapp);color:var(--branco);padding:12px 20px;border:none;border-radius:5px;width:100%;cursor:pointer;font-size:1.1em;margin-top:10px}
-.btn-whatsapp-finalizar:hover{background-color:#1a7c47}
-.mensagem-status{text-align:center;margin-top:15px;font-weight:700}
-.texto-centralizado{text-align:center;color:#999}
-
-/* SNACKBAR NOTIFICAÇÃO - TOPO ESQUERDO */
-#notification-snackbar {
-    visibility: hidden; 
-    min-width: 250px;
-    background-color: var(--verde-whatsapp);
-    color: var(--branco);
-    text-align: center;
-    border-radius: 5px;
-    padding: 16px;
-    position: fixed;
-    z-index: 2000;
-    left: 20px; 
-    top: 20px; 
-    font-size: 1em;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: visibility 0s, opacity 0.5s linear;
-    opacity: 0;
+.item-carrinho .btn-remover:hover {
+    color: #d9534f;
 }
-#notification-snackbar.show { visibility: visible; opacity: 1; }
-
-/* --- NOVO CSS: BOTÃO FLUTUANTE DO WHATSAPP --- */
-.whatsapp-float {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-.whatsapp-float a {
-    display: flex;
-    align-items: center;
-    background-color: var(--verde-whatsapp);
-    color: var(--branco);
-    padding: 10px 15px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1em;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s, transform 0.3s;
-}
-.whatsapp-float a:hover {
-    background-color: #1a7c47; 
-    transform: translateY(-2px);
-}
-.whatsapp-float .fa-whatsapp {
-    font-size: 1.5em; 
-    margin-right: 8px;
-}
-/* --- FIM NOVO CSS --- */
-
-/* --- NOVO CSS PARA O FOOTER MAIS INTERESSANTE --- */
-.footer-azul{
+.resumo-total{text-align:right;margin-top:15px;font-size:1.2em;font-weight:700;color:var(--azul-principal)}
+.resumo-total span{color:var(--vermelho-preco)}
+.formulario-pedido input{width:100%;padding:10px;margin-bottom:10px;border:1px solid #ccc;border-radius:5px;font-size:1em}
+.btn-whatsapp-finalizar{background-color:var(--verde-whatsapp);color:var(--branco);border:none;padding:12px 20px;border-radius:5px;cursor:pointer;font-weight:700;transition:background-color .3s;width:100%;margin-top:10px}
+.btn-whatsapp-finalizar:hover{background-color:#258a10}
+.btn-azul-escuro{background-color:var(--azul-principal);color:var(--branco);border:none;padding:12px 20px;border-radius:5px;cursor:pointer;font-weight:700;transition:background-color .3s;width:100%}
+.btn-azul-escuro:hover{background-color:#003a7a}
+.texto-centralizado{text-align:center;color:#666;padding:15px 0}
+.mensagem-status{margin-top:10px;text-align:center;font-weight:600}
+#notification-snackbar{visibility:hidden;min-width:250px;background-color:#333;color:#fff;text-align:center;border-radius:2px;padding:16px;position:fixed;z-index:10000;left:20px;top:20px;font-size:1em;box-shadow:0 4px 8px rgba(0,0,0,.2)}
+#notification-snackbar.show{visibility:visible;-webkit-animation:fadein .5s,fadeout .5s 3.5s;animation:fadein .5s,fadeout .5s 3.5s}
+@-webkit-keyframes fadein{from{top:0;opacity:0}to{top:20px;opacity:1}}
+@keyframes fadein{from{top:0;opacity:0}to{top:20px;opacity:1}}
+@-webkit-keyframes fadeout{from{top:20px;opacity:1}to{top:0;opacity:0}}
+@keyframes fadeout{from{top:20px;opacity:1}to{top:0;opacity:0}}
+.whatsapp-float{position:fixed;bottom:20px;right:20px;z-index:999}
+.whatsapp-float a{display:flex;align-items:center;background-color:var(--verde-whatsapp);color:var(--branco);padding:10px 15px;border-radius:50px;text-decoration:none;font-weight:700;box-shadow:0 4px 8px rgba(0,0,0,.2);transition:background-color .3s}
+.whatsapp-float a:hover{background-color:#258a10}
+.whatsapp-float i{font-size:1.5em;margin-right:10px}
+.footer-azul {
     background-color: var(--azul-principal);
     color: var(--branco);
-    padding: 40px 0 0; 
-    width: 100%;
+    padding-top: 50px;
+    margin-top: 30px;
 }
-
 .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 2fr; 
-    gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
     padding-bottom: 30px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-
 .footer-col h4 {
-    font-size: 1.3em;
+    font-size: 1.4em;
     margin-bottom: 20px;
-    font-weight: 700;
     position: relative;
     padding-bottom: 10px;
 }
-/* Linha decorativa nos títulos */
 .footer-col h4::after {
     content: '';
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 3px;
     width: 50px;
+    height: 3px;
     background-color: var(--azul-claro);
-    border-radius: 2px;
 }
-
-/* Coluna de Informação */
-.footer-logo {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    font-weight: 700;
-}
-.footer-info p {
-    margin-bottom: 8px;
+.footer-col p {
     font-size: 0.95em;
-    line-height: 1.4;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+.footer-col ul {
+    list-style: none;
+}
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+.footer-col ul li a {
+    color: var(--branco);
+    text-decoration: none;
+    font-size: 0.95em;
+    transition: color 0.3s;
+}
+.footer-col ul li a:hover {
+    color: var(--azul-claro);
 }
 .contato-info p {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
 }
-.contato-info .fas, .contato-info .fab {
+.contato-info i {
     margin-right: 10px;
     color: var(--azul-claro);
-    font-size: 1.1em;
-}
-
-/* Coluna de Links */
-.footer-links ul {
-    list-style: none;
-}
-.footer-links a {
-    color: var(--branco);
-    text-decoration: none;
-    font-size: 0.95em;
-    line-height: 2;
-    transition: color 0.3s;
-}
-.footer-links a:hover {
-    color: var(--azul-claro);
-    text-decoration: underline;
-}
-
-/* Coluna Newsletter */
-.footer-newsletter p {
-    margin-bottom: 15px;
-    font-size: 0.95em;
 }
 .newsletter-form {
     display: flex;
-    gap: 10px;
+    margin-top: 15px;
 }
 .newsletter-form input {
-    flex-grow: 1;
     padding: 10px;
     border: none;
-    border-radius: 5px;
-    font-size: 0.9em;
-    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    flex-grow: 1;
 }
 .btn-newsletter {
     background-color: var(--verde-whatsapp);
     color: var(--branco);
     border: none;
     padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 0 5px 5px 0;
     cursor: pointer;
     font-weight: 600;
     transition: background-color 0.3s;
-    flex-shrink: 0;
 }
 .btn-newsletter:hover {
     background-color: #1a7c47;
@@ -729,12 +674,12 @@ body{background-color:var(--cinza-fundo);line-height:1.6}
     </button>
     
     <a class='logo-area-link' href='/'>
-        <img src="https://i.imgur.com/FqLldYF.png" alt="Logo Distribuidora" class="logo-distribuidora-nav">
-        <img src="https://i.imgur.com/ryTmHRs.png" alt="Logo Kia & Hyundai" class="logo-kia-hyundai-nav">
-        <h1 class="logo-text">Distribuidora de peças Kia & Hyundai</h1>
+        <img src="https://i.imgur.com/v8w7x7x.png" alt="Logo Moura" class="logo-distribuidora-nav">
+        <img src="https://i.imgur.com/v8w7x7x.png" alt="Logo Moura" class="logo-kia-hyundai-nav" style="display:none;"> <!-- Escondida para usar apenas uma logo -->
+        <h1 class="logo-text">Distribuidor Oficial Baterias Moura</h1>
     </a>
     <div class="search-container">
-        <input type="text" id="search-input" placeholder="Buscar por nome ou modelo...">
+        <input type="text" id="search-input" placeholder="Buscar por modelo ou amperagem...">
     </div>
     
     <div class="nav-acoes">
@@ -751,22 +696,23 @@ body{background-color:var(--cinza-fundo);line-height:1.6}
             <ul>
                 <li><a href='/quemsomos'>Quem Somos</a></li>
                 <li class="has-submenu">
-                    <a href="#">Produtos <i class="fas fa-chevron-down"></i></a>
+                    <a href="#">Baterias <i class="fas fa-chevron-down"></i></a>
                     <ul class="submenu">
-                        <li><a href="#" onclick="filterByBrand('Hyundai'); return false;">Hyundai</a></li>
-                        <li><a href="#" onclick="filterByBrand('Kia'); return false;">Kia</a></li>
+                        <li><a href="#" onclick="filterByBrand('Automotiva'); return false;">Automotiva</a></li>
+                        <li><a href="#" onclick="filterByBrand('Moto'); return false;">Moto</a></li>
+                        <li><a href="#" onclick="filterByBrand('Estacionária'); return false;">Estacionária</a></li>
                     </ul>
                 </li>
-                <li><a href='/noticias'>Notícias</a></li>
+                <li><a href='/noticias'>Dicas e Manutenção</a></li>
                 <li class="has-submenu">
                     <a href="#">Contato <i class="fas fa-chevron-down"></i></a>
                     <ul class="submenu">
-                        <li><a href="https://api.whatsapp.com/send?phone=5511960720059&text=Ol%C3%A1%2C%20preciso%20de%20ajuda%20com%20pe%C3%A7as%20para%20Hyundai%20e%20Kia." target="_blank">Fale Conosco</a></li>
-                        <li><a href="#">Localização</a></li>
+                        <li><a href="https://api.whatsapp.com/send?phone=5511960720059&text=Ol%C3%A1%2C%20preciso%20de%20ajuda%20com%20baterias%20Moura." target="_blank">Fale Conosco</a></li>
+                        <li><a href="#">Onde Encontrar</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="https://api.whatsapp.com/send?phone=5511960720059&text=Ol%C3%A1%2C%20preciso%20de%20ajuda%20com%20pe%C3%A7as%20para%20Hyundai%20e%20Kia." target="_blank" style="color: var(--azul-claro); font-weight: 700;">
+                    <a href="https://api.whatsapp.com/send?phone=5511960720059&text=Ol%C3%A1%2C%20preciso%20de%20ajuda%20com%20baterias%20Moura." target="_blank" style="color: var(--azul-claro); font-weight: 700;">
                         Solicite seu Orçamento
                     </a>
                 </li>
@@ -777,19 +723,19 @@ body{background-color:var(--cinza-fundo);line-height:1.6}
 <section class="mini-banner-area">
     <div id="banner-slider">
         <div class="banner-slide">
-            <img src="https://i.imgur.com/GiUIDMZ.png" alt="Banner Hyundai">
+            <img src="https://i.imgur.com/v8w7x7x.png" alt="Banner Bateria Moura">
         </div>
         <div class="banner-slide">
-            <img src="https://i.imgur.com/zv9RrkO.png" alt="Banner Kia">
+            <img src="https://i.imgur.com/v8w7x7x.png" alt="Banner Bateria Moura">
         </div>
         <div class="banner-slide">
-            <img src="https://i.imgur.com/UH5prN2.png" alt="Banner Peças">
+            <img src="https://i.imgur.com/v8w7x7x.png" alt="Banner Bateria Moura">
         </div>
     </div>
 </section>
 <main id="conteudo-principal">
 <section id="produtos" class="produtos-destaque container">
-<h3>Peças em Destaque</h3>
+<h3>Baterias em Destaque</h3>
 <div class="grid-produtos" id="lista-produtos"></div>
 </section>
 </main>
@@ -829,12 +775,12 @@ Finalizar Pedido
 <footer class="footer-azul">
     <div class="container footer-grid">
         <div class="footer-col footer-info">
-            <h4 class="footer-logo">Distribuidora Kia & Hyundai</h4>
-            <p>Especialistas em peças originais e de reposição para sua Kia e Hyundai.</p>
+            <h4 class="footer-logo">Baterias Moura - Distribuidor</h4>
+            <p>A energia que move o Brasil. Distribuidor oficial das Baterias Moura.</p>
             
             <div class="contato-info">
                 <p><i class="fab fa-whatsapp"></i>(11) 96072-0059</p>
-                <p><i class="fas fa-envelope"></i> contatodistribuidoracaoa@gmail.com</p>
+                <p><i class="fas fa-envelope"></i> contato@bateriasmoura.com.br</p>
             </div>
 
         </div>
@@ -843,16 +789,16 @@ Finalizar Pedido
             <h4>Navegação Rápida</h4>
             <ul>
                 <li><a href='/quemsomos'>Quem Somos</a></li>
-                <li><a href="#" onclick="filterByBrand('Hyundai'); return false;">Peças Hyundai</a></li>
-                <li><a href="#" onclick="filterByBrand('Kia'); return false;">Peças Kia</a></li>
-                <li><a href='/noticias'>Notícias e Dicas</a></li>
+                <li><a href="#" onclick="filterByBrand('Automotiva'); return false;">Baterias Automotivas</a></li>
+                <li><a href="#" onclick="filterByBrand('Moto'); return false;">Baterias para Moto</a></li>
+                <li><a href='/noticias'>Dicas e Manutenção</a></li>
                 <li><a href="#">Política de Privacidade</a></li>
             </ul>
         </div>
 
         <div class="footer-col footer-newsletter">
             <h4>Receba Nossas Novidades</h4>
-            <p>Inscreva-se e receba promoções exclusivas e dicas de manutenção.</p>
+            <p>Inscreva-se e receba promoções exclusivas e dicas de manutenção de baterias.</p>
             <form action="#" method="post" class="newsletter-form">
                 <input type="email" placeholder="Seu E-mail" required>
                 <button type="submit" class="btn-newsletter">Inscrever</button>
@@ -862,7 +808,7 @@ Finalizar Pedido
     
     <div class="footer-bottom">
         <div class="container">
-            <p>&copy; 2025 Distribuidora Kia & Hyundai. Todos os direitos reservados.</p>
+            <p>&copy; 2025 Baterias Moura - Distribuidor Oficial. Todos os direitos reservados.</p>
         </div>
     </div>
 </footer>
@@ -871,7 +817,7 @@ Finalizar Pedido
 <div id="notification-snackbar"></div>
 
 <div class="whatsapp-float">
-    <a href="https://api.whatsapp.com/send?phone=5511960720059&text=Ol%C3%A1%2C%20preciso%20de%20ajuda%20com%20pe%C3%A7as%20para%20Hyundai%20e%20Kia." target="_blank">
+    <a href="https://api.whatsapp.com/send?phone=5511960720059&text=Ol%C3%A1%2C%20preciso%20de%20ajuda%20com%20baterias%20Moura." target="_blank">
         <i class="fab fa-whatsapp"></i>
         Solicitar Orçamento
     </a>
@@ -879,38 +825,17 @@ Finalizar Pedido
 <script>
 
 const catalogoPecas=[
-// Campo 'descricaoCompleta' adicionado a cada produto
-{id: 101, nome: "Amortecedor dianteiro Mando", preco: 899.99, modelo: "Kia Sportage", estoque: 50, imagem_url: "https://images.tcdn.com.br/img/img_prod/712470/par_amortecedor_dianteiro_cadenza_3_5_v6_2011_allen_6631_1_28608f5825ac43863a3a1b11830d90e4.jpg", descricaoCompleta: "Amortecedor dianteiro de alta performance da marca Mando, específico para Kia Sportage. Garante máxima estabilidade e conforto. Peça de reposição original de qualidade."},
-{id: 102, nome: "Amortecedor traseiro Nakata", preco: 480.00, modelo: "Kia Sportage", estoque: 50, imagem_url: "https://cdn.awsli.com.br/600x450/2592/2592224/produto/224292943/amortecedor-traseiro-kia-sportage-hyundai-ix35-nakata-hg41054-wszy4bjx9d.jpg", descricaoCompleta: "Amortecedor traseiro da marca Nakata, compatível com Kia Sportage. Excelente absorção de impacto e durabilidade. Ideal para manutenção preventiva e corretiva."},
-{id: 103, nome: "Caixa de direção Mando", preco: 1299.00, modelo: "Hyundai I30", estoque: 32, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_874395-MLB89882846253_082025-O.webp", descricaoCompleta: "Caixa de direção completa da marca Mando, para Hyundai I30. Essencial para o sistema de direção, oferecendo precisão e segurança. Peça nova e com garantia."},
-{id: 104, nome: "Bomba de direção hidráulica", preco: 910.00, modelo: "Kia Sorento 2.4", estoque: 21, imagem_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsIPAEGjP5tee_vLyJ11bKevw_lNPteSnSXQ&s", descricaoCompleta: "Bomba de direção hidráulica de alto fluxo para Kia Sorento 2.4. Restaura a leveza e a precisão da direção. Componente robusto e confiável."},
-{id: 105, nome: "Amortecedor dianteiro Mando", preco: 1180.00, modelo: "Hyundai Santa Fé", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_993608-MLB72668048512_112023-F.webp", descricaoCompleta: "Par de amortecedores dianteiros Mando para Hyundai Santa Fé. Desempenho superior e resistência em todas as condições de estrada."},
-{id: 106, nome: "Amortecedor traseiro Mando", preco: 2430.00, modelo: "Hyundai Santa Fé", estoque: 21, imagem_url: "https://images.tcdn.com.br/img/img_prod/946974/180_jogo_amortecedor_traseiro_hyundai_santa_fe_2012_ate_2014_24213_1_f8e3f8ce4ac5c2b0c54785d1b1a9c67d.jpg", descricaoCompleta: "Amortecedor traseiro (par) Mando para Hyundai Santa Fé. Peça de reposição que garante o conforto original do veículo. Importado com selo de qualidade."},
-{id: 107, nome: "Kit buchas suspensão traseira", preco: 630.00, modelo: "Hyundai X35, Kia Sportage", estoque: 21, imagem_url: "https://www.130rparts.com.br/cdn/shop/files/KIT_BUCHAS_TRAS_TUCSON_2.0_5fc366f8-fb41-48ec-935f-0f1a3fb57430_1080x.png?v=1748533770", descricaoCompleta: "Kit completo de buchas para suspensão traseira. Compatível com Hyundai IX35 e Kia Sportage. Melhora a estabilidade e elimina ruídos na suspensão."},
-{id: 108, nome: "Bandeja dianteira esquerda Azera", preco: 340.00, modelo: "Hyundai Azera", estoque: 21, imagem_url: "https://images.tcdn.com.br/img/img_prod/712470/bandeja_dianteira_esquerda_azera_3_0_v6_2011_8691_1_e05b3c016d6ec320388963e8dccdc9f8.jpg", descricaoCompleta: "Bandeja de suspensão dianteira, lado esquerdo, para Hyundai Azera. Inclui pivô e buchas. Produto de alta resistência e durabilidade."},
-{id: 109, nome: "Bandeja dianteira superior esquerda Azera", preco: 180.00, modelo: "Hyundai Azera", estoque: 21, imagem_url: "https://cdn.awsli.com.br/2500x2500/2592/2592224/produto/224292628/bandeja-dianteira-superior-esquerdo-hyundai-azera-2008-a-2011-nakata-nbj9006ep-givt9sghpr.jpg", descricaoCompleta: "Bandeja superior dianteira, lado esquerdo, para Hyundai Azera. Peça crucial para o alinhamento da roda. Qualidade de montadora."},
-{id: 110, nome: "Pivô dianteiro original Kia Cerato", preco: 149.00, modelo: "Kia Cerato", estoque: 21, imagem_url: "https://www.130rparts.com.br/cdn/shop/files/PVO1001_1080x.png?v=1749588601", descricaoCompleta: "Pivô de suspensão dianteira, peça original para Kia Cerato. Essencial para a segurança e dirigibilidade. Certificado de procedência."},
-{id: 111, nome: "Kit pastilhas de freio dianteira", preco: 249.00, modelo: "Hyundai Santa Fé/Kia Sorento", estoque: 21, imagem_url: "https://www.130rparts.com.br/cdn/shop/files/SP1690_d56d0b71-0c3b-47cb-aa25-3af091031ce9_1563x.png?v=1748532342", descricaoCompleta: "Kit completo de pastilhas de freio dianteiras. Alto poder de frenagem e baixo ruído. Compatível com Hyundai Santa Fé e Kia Sorento."},
-{id: 112, nome: "Kit pastilhas de freio traseira", preco: 175.00, modelo: "Hyundai Santa Fé/Kia Sorento", estoque: 21, imagem_url: "https://www.130rparts.com.br/cdn/shop/files/SP1247_0c333f7a-2a9f-4020-a1ed-f5d1e2e9d0c3_1563x.png?v=1748532220", descricaoCompleta: "Kit completo de pastilhas de freio traseiras. Material de alta fricção que garante segurança. Compatível com Hyundai Santa Fé e Kia Sorento."},
-{id: 113, nome: "Cabeçote do motor", preco: 2180.00, modelo: "Hyundai HB20 1.0 3CC 2018", estoque: 21, imagem_url: "https://images.tcdn.com.br/img/img_prod/1228990/cabecote_compativel_hyundai_hb20_1_0_3cc_2018_6469_2_93f9e20f9d3d527f6abe9645c335092d.jpeg", descricaoCompleta: "Cabeçote do motor Hyundai HB20 1.0 3 cilindros, ano 2018. Peça em ótimo estado, ideal para reposição original e compatível com motores 1.0 3CC"},
-{id: 114, nome: "KIT 16 BUCHAS SUSP TRASEIRA", preco: 415.00, modelo: "Hyundai Santa Fé 2008/12", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_664310-MLB89591499314_082025-F.webp", descricaoCompleta: "Kit com 16 buchas de suspensão traseira. Peças novas, ideais para reposição e garantir mais estabilidade e segurança na condução"},
-{id: 115, nome: "Kit Completo Suspensão Dianteira Hyundai Santa Fé 3.3", preco: 1180.00, modelo: "Hyundai Santa Fé 3.3 2013-2022", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_747512-MLB94042752945_102025-F.webp", descricaoCompleta: "Kit Completo para Suspensão Dianteira do Hyundai Santa Fé com motor 3.3, compatível com os anos de 2013 a 2022. Peça de reposição de qualidade."},
-{id: 116, nome: "Molas Reforçadas Gnv - Kia Sportage 2016", preco: 430.00, modelo: "Kia Sportage 2016", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_792394-MLB72888908796_112023-F-molas-reforcadas-gnv-kia-sportage-2016.webp", descricaoCompleta: "Par de Molas Traseiras Reforçadas para GNV (Gás Natural Veicular) da Kia Sportage, ano 2016. Ideais para compensar o peso adicional do cilindro de GNV e manter a altura original do veículo. Compatível com modelos de 2011 a 2016."},
-{id: 117, nome: "Par Bieleta Dianteira E Traseira", preco: 440.00, modelo: "Hyundai IX35 / Kia Sportage 2010-2016", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_866440-MLB80424460507_112024-F.webp", descricaoCompleta: "Kit contendo 02 pares de bieletas (dianteiras e traseiras) de suspensão. Compatível com Hyundai IX35 e Kia Sportage dos anos 2010 a 2016. Peças de origem Coreana (Korea)."},
-{id: 118, nome: "Kit Batente Dianteiro Traseiro", preco: 730.00, modelo: "Kia Sportage / Hyundai IX35 2010-2012", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_836459-MLB81240830522_122024-F.webp", descricaoCompleta: "Kit completo de batentes de suspensão (dianteiro e traseiro) para Kia Sportage e Hyundai IX35, compatível com os anos 2010, 2011 e 2012. Essencial para a absorção de impactos e durabilidade dos amortecedores."},
-{id: 119, nome: "Kit 4 Coxim Motor", preco: 1180.00, modelo: "Hyundai Santa Fe 2.4 / Kia Sorento", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_925126-MLB79143546942_092024-F.webp", descricaoCompleta: "Kit com 4 coxins (suportes) originais para o motor. Compatível com Hyundai Santa Fe 2.4 e Kia Sorento. Peças essenciais para reduzir a vibração do motor e garantir o alinhamento."},
-{id: 120, nome: "Kit 4 Amortecedor Nakata + Kit", preco: 1290.00, modelo: "Hyundai Vera Cruz 2007-2010", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_915493-MLB78663480740_092024-F.webp", descricaoCompleta: "Kit com 4 amortecedores da marca Nakata, mais o kit de instalação/reparo (batentes, coifas, etc.). Compatível com Hyundai Vera Cruz dos anos 2007, 2008, 2009 e 2010."},
-{id: 121, nome: "Kit Corrente Para Ix35 Elantra Tucson Sportage", preco: 890.00, modelo: "IX35 / Elantra / Tucson / Sportage", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_749891-MLB80055678496_102024-F-kit-corrente-para-ix35-elantra-tucson-sportage.webp", descricaoCompleta: "Kit completo de corrente de comando para motores. Compatível com Hyundai IX35, Elantra, Tucson e Kia Sportage."},
-{id: 122, nome: "Kit Corrente + 4 Polias Vvt Original", preco: 2799.90, modelo: "Hyundai Azera / Santa Fé / Veracruz / Kia Cadenza", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_983250-MLB87713604282_072025-F.webp", descricaoCompleta: "Kit Corrente + 4 Polias Vvt original. Compatível com Hyundai Azera, Santa Fé, Veracruz e Kia Cadenza."},
-{id: 123, nome: "Pastilha Freio Traseira Syl Original", preco: 130.00, modelo: "HYUNDAI Santa Fé / KIA Sorento Equus 2007-2024", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_960263-MLB76065329698_052024-F.webp", descricaoCompleta: "Pastilha de freio traseira Syl original. Compatível com Hyundai Santa Fé e Kia Sorento Equus de 2007 a 2024."},
-{id: 124, nome: "Par Kit Amortecedor Dianteiro Traseiro", preco: 1830.00, modelo: "IX35 2010 2011 a 2015", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_724625-MLB89470203819_082025-F.webp", descricaoCompleta: "Par Kit Amortecedor dianteiro traseiro compatível com IX35 de 2010 a 2015. Produto de alta qualidade."},
-{id: 125, nome: "Sensor de Rotação", preco: 250.00, modelo: "Hyundai Santa Fé / Hyundai Azera / Sorento 3.3 3.8 V6", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_746491-MLB77545812259_072024-F.webp", descricaoCompleta: "Sensor de rotação compatível com Hyundai Santa Fé, Hyundai Azera e Sorento 3.3 / 3.8 V6. Produto de alta durabilidade e precisão."},
-{id: 126, nome: "Bomba Direção Hidráulica", preco: 590.00, modelo: "Hyundai Azera 3.3 até 2011", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_969658-MLB80026911618_102024-F.webp", descricaoCompleta: "Bomba de direção hidráulica compatível com Hyundai Azera 3.3 até o ano de 2011. Produto de alta qualidade e excelente desempenho."},
-{id: 127, nome: "Caixa Direção Hidráulica", preco: 2240.00, modelo: "Kia Sorento 2.4 2011 a 2018", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_988721-MLB90387520646_082025-F.webp", descricaoCompleta: "Caixa de direção hidráulica compatível com Kia Sorento 2.4 de 2011 a 2018. Produto de alta durabilidade e desempenho confiável."},
-{id: 128, nome: "Caixa Direção Elétrica", preco: 1340.00, modelo: "Hyundai Santa Fé 3.3 2014 a 2019", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_874030-MLB83087300197_032025-F.webp", descricaoCompleta: "Caixa de direção elétrica compatível com Hyundai Santa Fé 3.3 de 2014 a 2019. Produto de alta qualidade e excelente desempenho."},
-{id: 129, nome: "Bomba Direção Hidráulica", preco: 640.00, modelo: "Hyundai Vera Cruz 3.8 Todos 57100-3J000", estoque: 21, imagem_url: "https://http2.mlstatic.com/D_NQ_NP_2X_863542-MLB43344836995_092020-F.webp", descricaoCompleta: "Bomba de direção hidráulica compatível com Hyundai Vera Cruz 3.8. Código 57100-3J000. Produto de alta durabilidade e desempenho confiável."},
-
-
+// Baterias Moura de Exemplo
+{id: 101, nome: "Moura M40FD - 40Ah", preco: 349.90, modelo: "Automotiva", estoque: 50, imagem_url: "https://i.imgur.com/M7q1z0Z.png", descricaoCompleta: "Bateria Moura 40Ah, ideal para carros populares com baixa demanda elétrica. Livre de manutenção, 18 meses de garantia."},
+{id: 102, nome: "Moura M60AD - 60Ah", preco: 499.90, modelo: "Automotiva", estoque: 50, imagem_url: "https://i.imgur.com/M7q1z0Z.png", descricaoCompleta: "Bateria Moura 60Ah, alta performance e durabilidade. Indicada para veículos médios e com equipamentos eletrônicos."},
+{id: 103, nome: "Moura M70AE - 70Ah", preco: 619.90, modelo: "Automotiva", estoque: 32, imagem_url: "https://i.imgur.com/M7q1z0Z.png", descricaoCompleta: "Bateria Moura 70Ah, excelente para veículos de grande porte, SUVs e picapes. Maior poder de arranque e resistência."},
+{id: 104, nome: "Moura Moto MA5-D - 5Ah", preco: 189.90, modelo: "Moto", estoque: 21, imagem_url: "https://i.imgur.com/M7q1z0Z.png", descricaoCompleta: "Bateria Moura para motos 5Ah, tecnologia AGM/VRLA. Ideal para motos de baixa cilindrada. Pronta para uso."},
+{id: 105, nome: "Moura Moto MA9-E - 9Ah", preco: 279.90, modelo: "Moto", estoque: 21, imagem_url: "https://i.imgur.com/M7q1z0Z.png", descricaoCompleta: "Bateria Moura para motos 9Ah, maior capacidade e durabilidade. Indicada para motos de média e alta cilindrada."},
+{id: 106, nome: "Moura Estacionária Clean 100Ah", preco: 1250.00, modelo: "Estacionária", estoque: 21, imagem_url: "https://i.imgur.com/M7q1z0Z.png", descricaoCompleta: "Bateria Moura Estacionária 100Ah, para sistemas de energia solar, no-breaks e telecomunicações. Ciclo profundo e longa vida útil."},
+{id: 107, nome: "Moura M48FD - 48Ah", preco: 399.90, modelo: "Automotiva", estoque: 21, imagem_url: "https://i.imgur.com/M7q1z0Z.png", descricaoCompleta: "Bateria Moura 48Ah, excelente custo-benefício para veículos compactos e sedans."},
+{id: 108, nome: "Moura M80AD - 80Ah", preco: 750.00, modelo: "Automotiva", estoque: 21, imagem_url: "https://i.imgur.com/M7q1z0Z.png", descricaoCompleta: "Bateria Moura 80Ah, máxima potência para veículos com alta exigência elétrica."},
+{id: 109, nome: "Moura Estacionária Clean 60Ah", preco: 890.00, modelo: "Estacionária", estoque: 21, imagem_url: "https://i.imgur.com/M7q1z0Z.png", descricaoCompleta: "Bateria Moura Estacionária 60Ah, ideal para no-breaks e sistemas de segurança."},
+{id: 110, nome: "Moura Moto MA7-D - 7Ah", preco: 229.90, modelo: "Moto", estoque: 21, imagem_url: "https://i.imgur.com/M7q1z0Z.png", descricaoCompleta: "Bateria Moura para motos 7Ah, confiabilidade e desempenho para o dia a dia."},
 ]
 
 let carrinho=[];
@@ -963,7 +888,7 @@ listaProdutosEl.innerHTML=catalogoPecas.map(p=>`
 <div class="produto-card" data-id="${p.id}" data-nome="${p.nome.toLowerCase()}" data-modelo="${p.modelo.toLowerCase()}">
 <img src="${p.imagem_url}" alt="${p.nome}">
 <h4>${p.nome}</h4>
-<p>Aplicação: ${p.modelo}</p>
+<p>Tipo: ${p.modelo}</p>
 <p class="preco">R$ ${p.preco.toFixed(2).replace('.',',')}</p>
 <button class="btn-adicionar" data-id="${p.id}" data-nome="${p.nome}" data-preco="${p.preco}" data-modelo="${p.modelo}">
 Adicionar ao Carrinho
@@ -971,6 +896,8 @@ Adicionar ao Carrinho
 </div>
 `).join('');
 document.querySelectorAll('.btn-adicionar').forEach(b=>b.addEventListener('click',adicionarAoCarrinho));
+// Re-adiciona o listener para o modal de detalhes após carregar os produtos
+adicionarListenersDetalheProduto();
 }
 
 
@@ -998,7 +925,8 @@ function filterProducts(filterTermOrBrand = null) {
             return;
         }
 
-        if (nome.includes(filterValue) || modelo.includes(filterValue)) {
+        // Filtra por nome, modelo (tipo de bateria) ou pela marca (Moura)
+        if (nome.includes(filterValue) || modelo.includes(filterValue) || 'moura'.includes(filterValue)) {
             card.classList.remove('hidden');
         } else {
             card.classList.add('hidden');
@@ -1075,7 +1003,7 @@ const itensMensagem=carrinho.map((i,idx)=>
 `*${idx+1}.* ${i.nome} (${i.modelo})\n    *Qtde:* ${i.quantidade} | *Subtotal:* R$ ${(i.preco*i.quantidade).toFixed(2).replace('.',',')}`
 ).join('\n');
 const mensagemWhatsapp=encodeURIComponent(
-`*NOVO PEDIDO DE PEÇAS - Distribuidora Kia & Hyundai (VIA SITE)*\n\n`+
+`*NOVO PEDIDO DE BATERIAS MOURA (VIA SITE)*\n\n`+
 `*Cliente:* ${clienteNome}\n`+
 `*WhatsApp:* ${clienteWhatsapp}\n\n`+
 `*ITENS DO PEDIDO:*\n${itensMensagem}\n\n`+
@@ -1118,7 +1046,7 @@ function abrirDetalhesProdutoModal(produtoId) {
                 <img src="${produto.imagem_url}" alt="${produto.nome}" style="max-width: 100%; max-height: 250px; object-fit: contain; border-radius: 5px;">
             </div>
             <h4 style="color: var(--azul-principal); font-size: 1.5em; margin-bottom: 5px;">${produto.nome}</h4>
-            <p style="color: #666; margin-bottom: 15px;">Aplicação: ${produto.modelo}</p>
+            <p style="color: #666; margin-bottom: 15px;">Tipo: ${produto.modelo}</p>
             <strong style="font-size: 1.6em; color: var(--vermelho-preco); display: block; margin-bottom: 20px;">R$ ${produto.preco.toFixed(2).replace('.', ',')}</strong>
             
             <h5 style="color: var(--azul-principal); margin-bottom: 10px;">Descrição Detalhada:</h5>
@@ -1134,17 +1062,14 @@ function abrirDetalhesProdutoModal(produtoId) {
 }
 
 function adicionarListenersDetalheProduto() {
+    // Remove listeners antigos para evitar duplicação
+    document.querySelectorAll('.produto-card').forEach(card => {
+        card.removeEventListener('click', handleCardClick);
+    });
+
     // Adiciona o evento de clique a todos os cartões de produto
     document.querySelectorAll('.produto-card').forEach(card => {
-        card.addEventListener('click', function(event) {
-            // Verifica se o clique não foi diretamente no botão "Adicionar ao Carrinho"
-            if (!event.target.classList.contains('btn-adicionar') && !event.target.closest('.btn-adicionar')) {
-                const produtoId = parseInt(this.getAttribute('data-id'));
-                if (!isNaN(produtoId)) {
-                    abrirDetalhesProdutoModal(produtoId);
-                }
-            }
-        });
+        card.addEventListener('click', handleCardClick);
     });
     
     // Permite fechar o modal ao clicar fora dele (no overlay)
@@ -1159,6 +1084,16 @@ function adicionarListenersDetalheProduto() {
     document.querySelectorAll('#detalhes-produto-modal .fechar-modal').forEach(span => {
         span.onclick = fecharDetalhesProdutoModal;
     });
+}
+
+function handleCardClick(event) {
+    // Verifica se o clique não foi no botão "Adicionar ao Carrinho"
+    if (!event.target.classList.contains('btn-adicionar') && !event.target.closest('.btn-adicionar')) {
+        const produtoId = parseInt(this.getAttribute('data-id'));
+        if (!isNaN(produtoId)) {
+            abrirDetalhesProdutoModal(produtoId);
+        }
+    }
 }
 // FIM ADICIONADO: Funções para o Modal de Detalhes do Produto
 
@@ -1183,7 +1118,7 @@ formularioPedidoEl.style.display='block';
 btnIniciarPedidoEl.style.display='none';
 mensagemStatusEl.textContent='';
 }else{
-alert('Seu carrinho está vazio. Adicione peças primeiro!');
+alert('Seu carrinho está vazio. Adicione baterias primeiro!');
 }
 });
 btnFinalizarWhatsAppEl.addEventListener('click',finalizarPedidoWhatsApp);
@@ -1244,7 +1179,7 @@ renderizarCarrinho();
 startBannerSlider();
 
 // ADICIONADO: Inicializa os listeners para o clique no produto
-adicionarListenersDetalheProduto();
+// Já está sendo chamado dentro de carregarProdutos() para garantir que os elementos existam.
 </script>
 </body>
 </html>
