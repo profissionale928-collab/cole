@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -317,7 +318,88 @@ body{background-color:var(--cinza-fundo);line-height:1.6}
 .preco{font-size:1.4em;color:var(--vermelho-preco);font-weight:700;margin-bottom:15px;display:block}
 .btn-adicionar{background-color:var(--cor-menu-hover);color:var(--branco);border:none;padding:10px 20px;border-radius:5px;cursor:pointer;font-weight:700;transition:background-color .3s}
 .btn-adicionar:hover{background-color:var(--azul-claro)}
-.modal{display:none;position:fixed;z-index:1001;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,.4)}
+
+/* CSS para o estado de carregamento do botão */
+.btn-adicionar.loading {
+    background-color: #004a99; /* Cor do azul principal para o estado de carregamento */
+    cursor: not-allowed;
+    position: relative;
+    color: transparent !important; /* Esconde o texto */
+    pointer-events: none; /* Impede cliques adicionais */
+}
+.btn-adicionar.loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin-top: -8px;
+    margin-left: -8px;
+    border: 2px solid #fff;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Novo CSS para a aba do carrinho (Sidebar) */
+.carrinho-sidebar {
+    height: 100%;
+    width: 0; /* Começa fechado */
+    position: fixed;
+    z-index: 1001;
+    top: 0;
+    right: 0;
+    background-color: var(--branco);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    box-shadow: -4px 0 10px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.carrinho-sidebar.open {
+    width: 350px; /* Largura aberta */
+}
+
+.carrinho-sidebar .fechar-modal {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+.carrinho-sidebar-content {
+    padding: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.carrinho-sidebar h2 {
+    color: var(--azul-principal);
+    text-align: center;
+    margin-bottom: 20px;
+    padding-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .carrinho-sidebar.open {
+        width: 100%; /* Ocupa toda a largura no mobile */
+    }
+}
+
+/* Esconde o modal antigo do carrinho */
+.modal {
+    display: none !important;
+}
+
+/* O modal antigo será substituído pela sidebar */
 .modal-content{background-color:var(--branco);margin:10% auto;padding:25px;border-radius:10px;width:90%;max-width:500px;position:relative;box-shadow:0 4px 12px rgba(0,0,0,.2)}
 .fechar-modal{color:#aaa;float:right;font-size:28px;font-weight:700;cursor:pointer}
 .fechar-modal:hover{color:#000}
@@ -332,486 +414,519 @@ body{background-color:var(--cinza-fundo);line-height:1.6}
 }
 .item-carrinho span:nth-child(1) { flex: 3; margin-right: 15px; font-size: 0.95em; min-width: 120px;}
 .item-carrinho span:nth-child(2) { flex: 0 0 40px; text-align: center; font-weight: bold;}
-.item-carrinho strong { flex: 1; text-align: right; min-width: 60px;}
-.item-carrinho .btn-remover {
+.item-carrinho strong { flex: 0 0 80px; text-align: right; font-size: 1em; color: var(--vermelho-preco);}
+.btn-remover {
     background: none;
     border: none;
-    color: #aaa;
+    color: #999;
     font-size: 1.2em;
     cursor: pointer;
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 5px;
-    line-height: 1;
+    margin-left: 10px;
+    transition: color 0.2s;
 }
-.item-carrinho .btn-remover:hover {
-    color: #d9534f;
+.btn-remover:hover {
+    color: var(--vermelho-preco);
 }
-.resumo-total{text-align:right;margin-top:15px;font-size:1.2em;font-weight:700;color:var(--azul-principal)}
-.resumo-total span{color:var(--vermelho-preco)}
-.formulario-pedido input{width:100%;padding:10px;margin-bottom:10px;border:1px solid #ccc;border-radius:5px;font-size:1em}
-.btn-whatsapp-finalizar{background-color:var(--verde-whatsapp);color:var(--branco);border:none;padding:12px 20px;border-radius:5px;cursor:pointer;font-weight:700;transition:background-color .3s;width:100%;margin-top:10px}
-.btn-whatsapp-finalizar:hover{background-color:#258a10}
-.btn-azul-escuro{background-color:var(--azul-principal);color:var(--branco);border:none;padding:12px 20px;border-radius:5px;cursor:pointer;font-weight:700;transition:background-color .3s;width:100%}
-.btn-azul-escuro:hover{background-color:#003a7a}
-.texto-centralizado{text-align:center;color:#666;padding:15px 0}
-.mensagem-status{margin-top:10px;text-align:center;font-weight:600}
-#notification-snackbar{visibility:hidden;min-width:250px;background-color:#333;color:#fff;text-align:center;border-radius:2px;padding:16px;position:fixed;z-index:10000;left:20px;top:20px;font-size:1em;box-shadow:0 4px 8px rgba(0,0,0,.2)}
-#notification-snackbar.show{visibility:visible;-webkit-animation:fadein .5s,fadeout .5s 3.5s;animation:fadein .5s,fadeout .5s 3.5s}
-@-webkit-keyframes fadein{from{top:0;opacity:0}to{top:20px;opacity:1}}
-@keyframes fadein{from{top:0;opacity:0}to{top:20px;opacity:1}}
-@-webkit-keyframes fadeout{from{top:20px;opacity:1}to{top:0;opacity:0}}
-@keyframes fadeout{from{top:20px;opacity:1}to{top:0;opacity:0}}
-.whatsapp-float{position:fixed;bottom:20px;right:20px;z-index:999}
-.whatsapp-float a{display:flex;align-items:center;background-color:var(--verde-whatsapp);color:var(--branco);padding:10px 15px;border-radius:50px;text-decoration:none;font-weight:700;box-shadow:0 4px 8px rgba(0,0,0,.2);transition:background-color .3s}
-.whatsapp-float a:hover{background-color:#258a10}
-.whatsapp-float i{font-size:1.5em;margin-right:10px}
-.footer-azul {
-    background-color: var(--azul-principal);
-    color: var(--branco);
-    padding-top: 50px;
-    margin-top: 30px;
+#valor-total-area {
+    text-align: right;
+    padding: 15px 0;
+    border-top: 1px solid #eee;
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--azul-principal);
 }
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    padding-bottom: 30px;
+#valor-total-area strong {
+    color: var(--vermelho-preco);
 }
-.footer-col h4 {
-    font-size: 1.4em;
-    margin-bottom: 20px;
-    position: relative;
-    padding-bottom: 10px;
+#carrinho-vazio {
+    text-align: center;
+    color: #666;
+    padding: 20px 0;
 }
-.footer-col h4::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 50px;
-    height: 3px;
-    background-color: var(--azul-claro);
+#formulario-pedido {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
 }
-.footer-col p {
-    font-size: 0.95em;
+#formulario-pedido h4 {
+    color: var(--azul-principal);
     margin-bottom: 15px;
-    line-height: 1.6;
 }
-.footer-col ul {
-    list-style: none;
-}
-.footer-col ul li {
-    margin-bottom: 10px;
-}
-.footer-col ul li a {
-    color: var(--branco);
-    text-decoration: none;
-    font-size: 0.95em;
-    transition: color 0.3s;
-}
-.footer-col ul li a:hover {
-    color: var(--azul-claro);
-}
-.contato-info p {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-.contato-info i {
-    margin-right: 10px;
-    color: var(--azul-claro);
-}
-.newsletter-form {
-    display: flex;
-    margin-top: 15px;
-}
-.newsletter-form input {
+#formulario-pedido input {
+    width: 100%;
     padding: 10px;
-    border: none;
-    border-radius: 5px 0 0 5px;
-    outline: none;
-    flex-grow: 1;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
-.btn-newsletter {
+#formulario-pedido button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+#btn-iniciar-pedido {
     background-color: var(--verde-whatsapp);
     color: var(--branco);
-    border: none;
-    padding: 10px 15px;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
+}
+#btn-iniciar-pedido:hover {
+    background-color: #25800f;
+}
+#finalizar-whatsapp {
+    background-color: var(--verde-whatsapp);
+    color: var(--branco);
+}
+#finalizar-whatsapp:hover {
+    background-color: #25800f;
+}
+#mensagem-status {
+    margin-top: 10px;
+    text-align: center;
     font-weight: 600;
+}
+.detalhes-produto-modal {
+    display: none;
+    position: fixed;
+    z-index: 1002;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+.detalhes-produto-content {
+    background-color: var(--branco);
+    margin: 5% auto;
+    padding: 25px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 700px;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.detalhes-produto-content h3 {
+    color: var(--azul-principal);
+    margin-bottom: 15px;
+}
+.detalhes-produto-content p {
+    margin-bottom: 10px;
+}
+.detalhes-produto-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.detalhes-produto-content .preco {
+    font-size: 1.6em;
+}
+.detalhes-produto-content .btn-adicionar {
+    margin-top: 15px;
+}
+.detalhes-produto-content .fechar-modal {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+}
+#notification-snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: var(--verde-whatsapp);
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    font-size: 17px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+#notification-snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 3.5s;
+    animation: fadein 0.5s, fadeout 0.5s 3.5s;
+}
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+}
+.whatsapp-float a {
+    display: flex;
+    align-items: center;
+    background-color: var(--verde-whatsapp);
+    color: var(--branco);
+    padding: 10px 15px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     transition: background-color 0.3s;
 }
-.btn-newsletter:hover {
-    background-color: #1a7c47;
+.whatsapp-float a:hover {
+    background-color: #25800f;
 }
-
-/* Ícones Sociais */
-.social-icons {
-    margin-top: 20px;
-}
-.social-icons a {
-    color: var(--branco);
+.whatsapp-float i {
     font-size: 1.5em;
-    margin-right: 15px;
-    transition: color 0.3s;
+    margin-right: 10px;
 }
-.social-icons a:hover {
-    color: var(--azul-claro);
-}
-
-/* Linha de Direitos Autorais */
-.footer-bottom {
-    padding: 15px 0;
-    font-size: 0.85em;
-    text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* --- INÍCIO DO CSS MOBILE (Media Query) --- */
-@media (max-width: 1199px) {
-    /* NOVO: REMOVE O MINI-BANNER EM TELAS ABAIXO DE 1200PX */
-    .mini-banner-area {
-        display: none;
-        height: 0;
-    }
+/* Estilos para o menu mobile */
+.menu-mobile-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+    display: none; /* Oculto por padrão */
+    transition: opacity 0.3s ease;
+    opacity: 0;
 }
 
-@media (max-width: 768px) { 
-    .container { width: 95%; }
+.menu-mobile-container.show-menu {
+    display: block;
+    opacity: 1;
+}
 
-    /* 1. Menu Hamburguer Visível */
+#menu-mobile {
+    position: absolute;
+    top: 0;
+    left: -80%; /* Começa fora da tela */
+    width: 80%;
+    height: 100%;
+    background-color: var(--branco);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: left 0.3s ease;
+    overflow-y: auto;
+    padding-top: 20px;
+}
+
+.menu-mobile-container.show-menu #menu-mobile {
+    left: 0; /* Entra na tela */
+}
+
+#menu-mobile ul {
+    list-style: none;
+    padding: 0;
+}
+
+#menu-mobile li {
+    border-bottom: 1px solid #eee;
+}
+
+#menu-mobile a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: var(--cor-menu-texto);
+    font-weight: 600;
+}
+
+#menu-mobile a:hover {
+    background-color: #f5f5f5;
+    color: var(--cor-menu-hover);
+}
+
+#menu-mobile .has-submenu > a {
+    position: relative;
+}
+
+#menu-mobile .has-submenu > a::after {
+    content: '\f054'; /* Ícone de seta para a direita */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+}
+
+#menu-mobile .has-submenu.open > a::after {
+    content: '\f078'; /* Ícone de seta para baixo */
+}
+
+#menu-mobile ul ul {
+    display: none;
+    background-color: #f9f9f9;
+    padding-left: 15px;
+}
+
+#menu-mobile ul ul a {
+    padding: 10px 20px;
+    font-weight: 400;
+}
+
+.menu-hamburguer {
+    display: block;
+    font-size: 1.5em;
+    color: var(--branco);
+    cursor: pointer;
+    padding: 10px;
+    order: 1;
+}
+
+.menu-hamburguer:hover {
+    opacity: 0.8;
+}
+
+.nav-acoes {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    order: 2;
+}
+
+.nav-acoes .btn-carrinho {
+    padding: 8px 12px;
+    font-size: 0.9em;
+}
+
+.nav-acoes .fa-shopping-cart {
+    margin-right: 5px;
+}
+
+.nav-acoes .contador-carrinho {
+    background-color: var(--vermelho-preco);
+    color: var(--branco);
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.7em;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-weight: 700;
+}
+
+@media (min-width: 769px) {
     .menu-hamburguer {
-        display: block;
-        background: none;
-        border: none;
-        color: var(--branco);
-        font-size: 1.5em;
-        cursor: pointer;
-        padding: 0;
-        margin-right: 15px;
-        order: 0; 
-        text-shadow: 0 0 5px rgba(0,0,0,0.8);
+        display: none;
     }
-
-    /* 2. Layout do Header Azul em Mobile */
-    .header-azul .container {
-        flex-wrap: wrap; 
-        justify-content: space-between;
-        gap: 5px; 
-        justify-content: flex-start; 
-    }
-    
-    /* Logos maiores no mobile (tamanhos de imagem já ajustados na etapa anterior) */
-    .logo-distribuidora-nav {
-        height: 45px; 
-        margin-right: 5px;
-    }
-    .logo-kia-hyundai-nav {
-        height: 50px; 
-        margin-right: 10px;
-    }
-    
-    /* ESCONDE O TÍTULO DE TEXTO NO MOBILE */
-    .logo-text { 
-        display: none; 
-    } 
-
-    /* NOVO: A área do link de logo com as IMAGENS */
-    .logo-area-link { 
-        order: 3; 
-        flex-grow: 1; 
-        justify-content: flex-start;
-        margin-right: 5px; 
-    } 
-
-    .search-container { 
-        width: 100%; 
-        max-width: none; 
-        order: 5; 
-    }
-    .nav-acoes { 
-        order: 4; 
-    }
-    .btn-carrinho { 
-        width: auto; 
-        padding: 8px 12px; 
-    }
-
-
-    /* 3. Menu Principal (Novo-header) Transforma-se em Mobile */
-    .novo-header {
-        position: fixed;
-        top: 0;
-        left: -100%; 
-        width: 80%;
-        max-width: 300px;
-        height: 100%;
-        background-color: var(--branco);
-        z-index: 9999;
-        transition: left 0.4s ease-in-out;
-        box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-        border-bottom: none;
-        overflow-y: auto; 
-    }
-    /* Classe para mostrar o menu */
-    .novo-header.show-menu {
-        left: 0;
-    }
-
-    .novo-header .container {
-        padding: 0;
-        height: 100%;
-        align-items: flex-start;
-    }
-    .novo-header .main-nav ul {
-        flex-direction: column; 
-        padding: 60px 0 20px 0; 
-        justify-content: flex-start;
-        align-items: flex-start;
-        width: 100%;
-    }
-    .novo-header .main-nav > ul > li {
-        margin: 0;
-        width: 100%;
-        border-bottom: 1px solid #eee;
-    }
-    .novo-header .main-nav a {
-        padding: 15px 20px;
-        justify-content: space-between; 
-        width: 100%;
-    }
-    
-    /* Submenu no Mobile */
-    .novo-header .main-nav ul ul {
-        position: static; 
-        display: none; 
-        box-shadow: none;
-        min-width: auto;
-        border-radius: 0;
-        padding: 0;
-        background-color: #f9f9f9; 
-        border-top: 1px solid #eee;
-    }
-    .novo-header .main-nav ul ul a {
-        padding: 10px 35px; 
-        font-size: 0.95em;
-    }
-
-    /* Efeito hover vira toggle/click no mobile */
-    .novo-header .main-nav > ul > li:hover > ul {
-        display: none; 
-    }
-    /* A seta não precisa girar no mobile, pois a abertura será via JS (toggle) */
-    .novo-header .main-nav > ul > li:hover > a .fa-chevron-down {
-        transform: none;
-    }
-
-    /* Outros ajustes mobile existentes */
-    .produtos-destaque { padding: 20px 0; }
-    .produtos-destaque h3 { font-size: 1.5em; margin-bottom: 20px; }
-    .grid-produtos { gap: 20px; }
-    .modal-content { margin: 5% auto; width: 95%; padding: 20px; }
-    .item-carrinho { flex-wrap: wrap; }
-    .item-carrinho span:nth-child(1) { flex: 1 1 100%; margin-bottom: 5px; margin-right: 0; font-size: 1em; }
-    .item-carrinho span:nth-child(2) { flex: 0 0 auto; text-align: left; order: 2; margin-right: 15px; min-width: auto; }
-    .item-carrinho strong { flex: 1 1 auto; text-align: right; min-width: 60px; order: 3; }
-    .item-carrinho .btn-remover { order: 4; margin-left: 10px; position: static; }
-    #notification-snackbar { left: 50%; transform: translateX(-50%); min-width: 90%; top: 15px; }
-    .mini-banner-area { height: 200px; }
-    .whatsapp-float {
-        right: 10px;
-        bottom: 10px;
-    }
-    .whatsapp-float a {
-        padding: 8px 12px;
-        font-size: 0.9em;
-    }
-    
-    /* AJUSTE MOBILE PARA O FOOTER */
-    .footer-azul {
-        padding-top: 30px;
-    }
-    .footer-grid {
-        grid-template-columns: 1fr; 
-        gap: 25px;
-        text-align: center; 
-        padding-bottom: 20px;
-    }
-    .footer-col h4 {
-        text-align: center;
-    }
-    .footer-col h4::after {
-        left: 50%;
-        transform: translateX(-50%); 
-    }
-    .contato-info p {
-        justify-content: center; 
-    }
-    .social-icons {
-        margin-top: 10px;
-        text-align: center;
-    }
-    .newsletter-form {
-        flex-direction: column; 
-    }
-    .newsletter-form button {
-        width: 100%;
+    .menu-mobile-container {
+        display: none !important;
     }
 }
-/* --- FIM DO CSS MOBILE --- */
 </style>
 </head>
 <body>
 <div id="pagina-container">
-<header class="header-azul">
-<div class="container">
-    <button id="menu-hamburguer" class="menu-hamburguer">
-        <i class="fas fa-bars"></i>
-    </button>
     
-    <a class='logo-area-link' href='/'>
-        <img src="https://i.imgur.com/v8w7x7x.png" alt="Logo Moura" class="logo-distribuidora-nav">
-        <img src="https://i.imgur.com/v8w7x7x.png" alt="Logo Moura" class="logo-kia-hyundai-nav" style="display:none;"> <!-- Escondida para usar apenas uma logo -->
-        <h1 class="logo-text">Distribuidor Oficial Baterias Moura</h1>
-    </a>
-    <div class="search-container">
-        <input type="text" id="search-input" placeholder="Buscar por modelo ou amperagem...">
-    </div>
+    <!-- Header Azul (Topo) -->
+    <header class="header-azul">
+        <div class="container">
+            <div class="menu-hamburguer" id="menu-hamburguer">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <a href="#" class="logo-area-link">
+                <img src="https://i.imgur.com/CIstRaz.png" alt="Logo Distribuidora" class="logo-distribuidora-nav">
+                <img src="https://i.imgur.com/M7q1z0Z.png" alt="Logo Kia & Hyundai" class="logo-kia-hyundai-nav">
+                <h1 class="logo-text">Baterias Moura</h1>
+            </a>
+            
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Buscar baterias por modelo, Ah, ou tipo...">
+            </div>
+            
+            <div class="nav-acoes">
+                <button class="btn-carrinho" onclick="abrirCarrinhoSidebar()">
+                    <i class="fas fa-shopping-cart"></i>
+                    Carrinho (<span id="contador-carrinho">0</span>)
+                </button>
+            </div>
+        </div>
+    </header>
     
-    <div class="nav-acoes">
-        <button id="abrir-carrinho" class="btn-carrinho">
-            <i class="fas fa-shopping-cart"></i> Carrinho (<span id="contador-carrinho">0</span>)
-        </button>
-    </div>
-</div>
-</header>
-
-<header class="novo-header" id="menu-mobile-container">
-    <div class="container">
-        <nav class="main-nav" id="menu-mobile">
+    <!-- Header Branco (Menu Principal) -->
+    <header class="novo-header">
+        <div class="container">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li class="has-submenu">
+                        <a href="#">Baterias Automotivas <i class="fas fa-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="#" onclick="filterByBrand('m40fd')">Moura M40FD</a></li>
+                            <li><a href="#" onclick="filterByBrand('m60ad')">Moura M60AD</a></li>
+                            <li><a href="#" onclick="filterByBrand('m70ae')">Moura M70AE</a></li>
+                            <li><a href="#" onclick="filterByBrand('m80ad')">Moura M80AD</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#">Baterias para Moto <i class="fas fa-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="#" onclick="filterByBrand('moto ma5-d')">Moura MA5-D</a></li>
+                            <li><a href="#" onclick="filterByBrand('moto ma9-e')">Moura MA9-E</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" onclick="filterByBrand('estacionaria')">Baterias Estacionárias</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Menu Mobile (Oculto por padrão) -->
+    <div class="menu-mobile-container" id="menu-mobile-container">
+        <nav id="menu-mobile">
             <ul>
-                <li><a href='/quemsomos'>Quem Somos</a></li>
+                <li><a href="#">Início</a></li>
                 <li class="has-submenu">
-                    <a href="#">Baterias <i class="fas fa-chevron-down"></i></a>
-                    <ul class="submenu">
-                        <li><a href="#" onclick="filterByBrand('Automotiva'); return false;">Automotiva</a></li>
-                        <li><a href="#" onclick="filterByBrand('Moto'); return false;">Moto</a></li>
-                        <li><a href="#" onclick="filterByBrand('Estacionária'); return false;">Estacionária</a></li>
+                    <a href="#">Baterias Automotivas</a>
+                    <ul>
+                        <li><a href="#" onclick="filterByBrand('m40fd')">Moura M40FD</a></li>
+                        <li><a href="#" onclick="filterByBrand('m60ad')">Moura M60AD</a></li>
+                        <li><a href="#" onclick="filterByBrand('m70ae')">Moura M70AE</a></li>
+                        <li><a href="#" onclick="filterByBrand('m80ad')">Moura M80AD</a></li>
                     </ul>
                 </li>
-                <li><a href='/noticias'>Dicas e Manutenção</a></li>
                 <li class="has-submenu">
-                    <a href="#">Contato <i class="fas fa-chevron-down"></i></a>
-                    <ul class="submenu">
-                        <li><a href="https://api.whatsapp.com/send?phone=5511960720059&text=Ol%C3%A1%2C%20preciso%20de%20ajuda%20com%20baterias%20Moura." target="_blank">Fale Conosco</a></li>
-                        <li><a href="#">Onde Encontrar</a></li>
+                    <a href="#">Baterias para Moto</a>
+                    <ul>
+                        <li><a href="#" onclick="filterByBrand('moto ma5-d')">Moura MA5-D</a></li>
+                        <li><a href="#" onclick="filterByBrand('moto ma9-e')">Moura MA9-E</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="https://api.whatsapp.com/send?phone=5511960720059&text=Ol%C3%A1%2C%20preciso%20de%20ajuda%20com%20baterias%20Moura." target="_blank" style="color: var(--azul-claro); font-weight: 700;">
-                        Solicite seu Orçamento
-                    </a>
-                </li>
+                <li><a href="#" onclick="filterByBrand('estacionaria')">Baterias Estacionárias</a></li>
+                <li><a href="#">Contato</a></li>
             </ul>
         </nav>
     </div>
-</header>
-<section class="mini-banner-area">
-    <div id="banner-slider">
-        <div class="banner-slide">
-            <img src="https://i.imgur.com/v8w7x7x.png" alt="Banner Bateria Moura">
-        </div>
-        <div class="banner-slide">
-            <img src="https://i.imgur.com/v8w7x7x.png" alt="Banner Bateria Moura">
-        </div>
-        <div class="banner-slide">
-            <img src="https://i.imgur.com/v8w7x7x.png" alt="Banner Bateria Moura">
-        </div>
-    </div>
-</section>
-<main id="conteudo-principal">
-<section id="produtos" class="produtos-destaque container">
-<h3>Baterias em Destaque</h3>
-<div class="grid-produtos" id="lista-produtos"></div>
-</section>
-</main>
-<div id="modal-carrinho" class="modal">
-<div class="modal-content">
-<span class="fechar-modal">&times;</span>
-<h4>Seu Carrinho de Pedidos</h4>
-<div id="itens-carrinho">
-<p id="carrinho-vazio" class="texto-centralizado">O carrinho está vazio.</p>
-</div>
-<div class="resumo-total">
-<strong>Total:</strong> <span id="valor-total">R$ 0,00</span>
-</div>
-<div id="formulario-pedido" class="formulario-pedido" style="display:none;">
-<h5>Detalhes para Envio do Pedido via WhatsApp</h5>
-<input type="text" id="campo-nome" placeholder="Seu Nome Completo" required>
-<input type="tel" id="campo-whatsapp" placeholder="Seu WhatsApp (apenas números)" required>
-<button id="finalizar-whatsapp" class="btn-whatsapp-finalizar">
-<i class="fab fa-whatsapp"></i> Enviar Pedido para Atendente
-</button>
-<p id="mensagem-status" class="mensagem-status"></p>
-</div>
-<button id="btn-iniciar-pedido" class="btn-azul-escuro" style="margin-top:15px;">
-Finalizar Pedido
-</button>
-</div>
-</div>
-
-<div id="detalhes-produto-modal" class="modal">
-    <div class="modal-content">
-        <span class="fechar-modal" onclick="fecharDetalhesProdutoModal()">&times;</span>
-        <h3 style="color:var(--azul-principal); margin-bottom: 20px;">Detalhes do Produto</h3>
-        <div id="detalhes-produto-body">
-            </div>
-    </div>
-</div>
-<footer class="footer-azul">
-    <div class="container footer-grid">
-        <div class="footer-col footer-info">
-            <h4 class="footer-logo">Baterias Moura - Distribuidor</h4>
-            <p>A energia que move o Brasil. Distribuidor oficial das Baterias Moura.</p>
+    
+    <!-- Sidebar do Carrinho (Novo) -->
+    <div id="carrinho-sidebar" class="carrinho-sidebar">
+        <span class="fechar-modal" onclick="fecharCarrinhoSidebar()">&times;</span>
+        <div class="carrinho-sidebar-content">
+            <h2>Seu Carrinho</h2>
             
-            <div class="contato-info">
-                <p><i class="fab fa-whatsapp"></i>(11) 96072-0059</p>
-                <p><i class="fas fa-envelope"></i> contato@bateriasmoura.com.br</p>
+            <div id="itens-carrinho">
+                <!-- Itens do carrinho serão inseridos aqui -->
             </div>
-
-        </div>
-
-        <div class="footer-col footer-links">
-            <h4>Navegação Rápida</h4>
-            <ul>
-                <li><a href='/quemsomos'>Quem Somos</a></li>
-                <li><a href="#" onclick="filterByBrand('Automotiva'); return false;">Baterias Automotivas</a></li>
-                <li><a href="#" onclick="filterByBrand('Moto'); return false;">Baterias para Moto</a></li>
-                <li><a href='/noticias'>Dicas e Manutenção</a></li>
-                <li><a href="#">Política de Privacidade</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-col footer-newsletter">
-            <h4>Receba Nossas Novidades</h4>
-            <p>Inscreva-se e receba promoções exclusivas e dicas de manutenção de baterias.</p>
-            <form action="#" method="post" class="newsletter-form">
-                <input type="email" placeholder="Seu E-mail" required>
-                <button type="submit" class="btn-newsletter">Inscrever</button>
-            </form>
+            
+            <p id="carrinho-vazio">Seu carrinho está vazio.</p>
+            
+            <div id="valor-total-area">
+                Total: <span id="valor-total">R$ 0,00</span>
+            </div>
+            
+            <button id="btn-iniciar-pedido" class="btn-adicionar" style="display:none;">Iniciar Pedido</button>
+            
+            <div id="formulario-pedido" style="display:none;">
+                <h4>Finalizar Pedido (WhatsApp)</h4>
+                <form id="form-pedido">
+                    <input type="text" id="campo-nome" placeholder="Seu Nome Completo" required>
+                    <input type="tel" id="campo-whatsapp" placeholder="WhatsApp com DDD (Ex: 11987654321)" required>
+                    <button type="submit" id="finalizar-whatsapp">Enviar Pedido por WhatsApp</button>
+                </form>
+                <p id="mensagem-status"></p>
+            </div>
         </div>
     </div>
     
-    <div class="footer-bottom">
-        <div class="container">
-            <p>&copy; 2025 Baterias Moura - Distribuidor Oficial. Todos os direitos reservados.</p>
+    <!-- Conteúdo Principal -->
+    <main id="conteudo-principal">
+        
+        <!-- Mini Banner (Slider) -->
+        <section class="mini-banner-area">
+            <div id="banner-slider">
+                <div class="banner-slide"><img src="https://i.imgur.com/Y4y4Y4Y.png" alt="Banner 1 - Moura"></div>
+                <div class="banner-slide"><img src="https://i.imgur.com/Z5z5Z5Z.png" alt="Banner 2 - Moura"></div>
+                <div class="banner-slide"><img src="https://i.imgur.com/X3x3X3X.png" alt="Banner 3 - Moura"></div>
+            </div>
+        </section>
+        
+        <!-- Produtos em Destaque -->
+        <section class="produtos-destaque">
+            <div class="container">
+                <h3>Baterias Moura em Destaque</h3>
+                <div class="grid-produtos" id="lista-produtos">
+                    <!-- Produtos serão carregados aqui pelo JavaScript -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- Modal de Detalhes do Produto (Mantido) -->
+        <div id="detalhes-produto-modal" class="detalhes-produto-modal">
+            <div class="detalhes-produto-content">
+                <span class="fechar-modal" onclick="fecharDetalhesProdutoModal()">&times;</span>
+                <div id="detalhes-produto-body">
+                    <!-- Conteúdo de detalhes do produto será inserido aqui -->
+                </div>
+            </div>
         </div>
-    </div>
-</footer>
+        
+    </main>
+    
+    <!-- Rodapé -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Automotivas</a></li>
+                    <li><a href="#">Motos</a></li>
+                    <li><a href="#">Estacionárias</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Fale Conosco</h4>
+                <p><i class="fas fa-phone"></i> (11) 96072-0059</p>
+                <p><i class="fas fa-envelope"></i> contato@bateriasmoura.com.br</p>
+                <p><i class="fas fa-map-marker-alt"></i> São Paulo - SP</p>
+            </div>
+            <div class="footer-section">
+                <h4>Redes Sociais</h4>
+                <div class="social-links">
+                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Receba Nossas Novidades</h4>
+                <p>Inscreva-se e receba promoções exclusivas e dicas de manutenção de baterias.</p>
+                <form action="#" method="post" class="newsletter-form">
+                    <input type="email" placeholder="Seu E-mail" required>
+                    <button type="submit" class="btn-newsletter">Inscrever</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2025 Baterias Moura - Distribuidor Oficial. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
 </div>
 
 <div id="notification-snackbar"></div>
@@ -841,7 +956,8 @@ const catalogoPecas=[
 let carrinho=[];
 const listaProdutosEl=document.getElementById('lista-produtos');
 const contadorCarrinhoEl=document.getElementById('contador-carrinho');
-const modalCarrinhoEl=document.getElementById('modal-carrinho');
+const modalCarrinhoEl=document.getElementById('modal-carrinho'); // Mantido para compatibilidade, mas não usado
+const carrinhoSidebarEl = document.getElementById('carrinho-sidebar'); // Novo elemento
 const itensCarrinhoEl=document.getElementById('itens-carrinho');
 const valorTotalEl=document.getElementById('valor-total');
 const carrinhoVazioEl=document.getElementById('carrinho-vazio');
@@ -851,7 +967,6 @@ const btnFinalizarWhatsAppEl=document.getElementById('finalizar-whatsapp');
 const mensagemStatusEl=document.getElementById('mensagem-status');
 const notificationSnackbarEl=document.getElementById('notification-snackbar');
 const searchInputEl = document.getElementById('search-input'); 
-const bannerSliderEl = document.getElementById('banner-slider'); 
 
 // Variáveis do Banner Slider
 let currentSlide = 0;
@@ -934,16 +1049,25 @@ function filterProducts(filterTermOrBrand = null) {
     });
 }
 
+// Funções para a nova Sidebar do Carrinho
+function abrirCarrinhoSidebar() {
+    carrinhoSidebarEl.classList.add('open');
+}
+
+function fecharCarrinhoSidebar() {
+    carrinhoSidebarEl.classList.remove('open');
+}
 
 function renderizarCarrinho(){
 itensCarrinhoEl.innerHTML='';
 let total=0;
 if(carrinho.length===0){
 carrinhoVazioEl.style.display='block';
-btnIniciarPedidoEl.disabled=true;
+btnIniciarPedidoEl.style.display='none';
+formularioPedidoEl.style.display='none';
 }else{
 carrinhoVazioEl.style.display='none';
-btnIniciarPedidoEl.disabled=false;
+btnIniciarPedidoEl.style.display='block';
 carrinho.forEach(item=>{
 const subtotal=item.preco*item.quantidade;
 total+=subtotal;
@@ -962,21 +1086,42 @@ itensCarrinhoEl.querySelectorAll('.btn-remover').forEach(b=>b.addEventListener('
 valorTotalEl.textContent=`R$ ${total.toFixed(2).replace('.',',')}`;
 contadorCarrinhoEl.textContent=carrinho.reduce((a,i)=>a+i.quantidade,0);
 }
-function adicionarAoCarrinho(e){
-const id=parseInt(e.target.dataset.id);
-const nome=e.target.dataset.nome;
-const preco=parseFloat(e.target.dataset.preco);
-const modelo=e.target.dataset.modelo;
 
-const itemExistente=carrinho.find(i=>i.id===id);
-if(itemExistente){
-itemExistente.quantidade++;
-}else{
-carrinho.push({id,nome,preco,quantidade:1,modelo});
+// Função modificada para incluir delay e carregamento
+function adicionarAoCarrinho(e){
+    const btn = e.target;
+    
+    // 1. Estado de Carregamento
+    btn.classList.add('loading');
+    btn.textContent = ''; // Limpa o texto para mostrar o spinner
+
+    // 2. Delay
+    setTimeout(() => {
+        // Lógica original de adicionar ao carrinho
+        const id=parseInt(btn.dataset.id);
+        const nome=btn.dataset.nome;
+        const preco=parseFloat(btn.dataset.preco);
+        const modelo=btn.dataset.modelo;
+        
+        const itemExistente=carrinho.find(i=>i.id===id);
+        if(itemExistente){
+            itemExistente.quantidade++;
+        }else{
+            carrinho.push({id,nome,preco,quantidade:1,modelo});
+        }
+        
+        renderizarCarrinho();
+        
+        // 3. Abrir a aba do carrinho (Sidebar)
+        abrirCarrinhoSidebar();
+
+        // 4. Remover estado de carregamento e restaurar texto
+        btn.classList.remove('loading');
+        btn.textContent = 'Adicionar ao Carrinho';
+        
+    }, 800); // Delay de 800ms
 }
-renderizarCarrinho();
-showNotification(`<i class="fas fa-check-circle"></i> ${nome} adicionado ao carrinho!`);
-}
+
 function removerDoCarrinho(e){
 const id=parseInt(e.target.dataset.id);
 const index=carrinho.findIndex(i=>i.id===id);
@@ -989,6 +1134,7 @@ carrinho.splice(index,1);
 }
 renderizarCarrinho();
 }
+
 function finalizarPedidoWhatsApp(e){
 e.preventDefault();
 const clienteNome=document.getElementById('campo-nome').value.trim();
@@ -1019,7 +1165,7 @@ setTimeout(()=>{
 window.open(linkWhatsApp,'_blank');
 carrinho=[];
 renderizarCarrinho();
-modalCarrinhoEl.style.display='none';
+fecharCarrinhoSidebar();
 btnFinalizarWhatsAppEl.disabled=false;
 document.getElementById('campo-nome').value='';
 document.getElementById('campo-whatsapp').value='';
@@ -1043,143 +1189,85 @@ function abrirDetalhesProdutoModal(produtoId) {
         // Cria o HTML de detalhes do produto
         modalContentBody.innerHTML = `
             <div style="text-align: center; margin-bottom: 20px;">
-                <img src="${produto.imagem_url}" alt="${produto.nome}" style="max-width: 100%; max-height: 250px; object-fit: contain; border-radius: 5px;">
+                <img src="${produto.imagem_url}" alt="${produto.nome}" style="max-width: 200px;">
             </div>
-            <h4 style="color: var(--azul-principal); font-size: 1.5em; margin-bottom: 5px;">${produto.nome}</h4>
-            <p style="color: #666; margin-bottom: 15px;">Tipo: ${produto.modelo}</p>
-            <strong style="font-size: 1.6em; color: var(--vermelho-preco); display: block; margin-bottom: 20px;">R$ ${produto.preco.toFixed(2).replace('.', ',')}</strong>
-            
-            <h5 style="color: var(--azul-principal); margin-bottom: 10px;">Descrição Detalhada:</h5>
-            <p style="margin-bottom: 20px; line-height: 1.5; font-size: 0.95em;">${produto.descricaoCompleta}</p>
-            
-            <button class="btn-adicionar" data-id="${produto.id}" data-nome="${produto.nome}" data-preco="${produto.preco}" data-modelo="${produto.modelo}" style="margin-top: 10px;" onclick="adicionarAoCarrinho(event); fecharDetalhesProdutoModal();">
-                <i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho
+            <h3>${produto.nome}</h3>
+            <p><strong>Tipo:</strong> ${produto.modelo}</p>
+            <p><strong>Descrição:</strong> ${produto.descricaoCompleta}</p>
+            <p class="preco">R$ ${produto.preco.toFixed(2).replace('.',',')}</p>
+            <button class="btn-adicionar" data-id="${produto.id}" data-nome="${produto.nome}" data-preco="${produto.preco}" data-modelo="${produto.modelo}" onclick="adicionarAoCarrinho(event); fecharDetalhesProdutoModal();">
+                Adicionar ao Carrinho
             </button>
         `;
-
+        
         document.getElementById('detalhes-produto-modal').style.display = 'block';
     }
 }
 
 function adicionarListenersDetalheProduto() {
-    // Remove listeners antigos para evitar duplicação
     document.querySelectorAll('.produto-card').forEach(card => {
-        card.removeEventListener('click', handleCardClick);
-    });
-
-    // Adiciona o evento de clique a todos os cartões de produto
-    document.querySelectorAll('.produto-card').forEach(card => {
-        card.addEventListener('click', handleCardClick);
-    });
-    
-    // Permite fechar o modal ao clicar fora dele (no overlay)
-    const modal = document.getElementById('detalhes-produto-modal');
-    modal.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            fecharDetalhesProdutoModal();
-        }
-    });
-
-    // Reutiliza o listener para fechar o modal ao clicar no X
-    document.querySelectorAll('#detalhes-produto-modal .fechar-modal').forEach(span => {
-        span.onclick = fecharDetalhesProdutoModal;
+        card.addEventListener('click', (e) => {
+            // Verifica se o clique não foi no botão "Adicionar ao Carrinho"
+            if (!e.target.classList.contains('btn-adicionar')) {
+                const produtoId = parseInt(card.dataset.id);
+                abrirDetalhesProdutoModal(produtoId);
+            }
+        });
     });
 }
 
-function handleCardClick(event) {
-    // Verifica se o clique não foi no botão "Adicionar ao Carrinho"
-    if (!event.target.classList.contains('btn-adicionar') && !event.target.closest('.btn-adicionar')) {
-        const produtoId = parseInt(this.getAttribute('data-id'));
-        if (!isNaN(produtoId)) {
-            abrirDetalhesProdutoModal(produtoId);
-        }
+// Event Listeners
+document.addEventListener('DOMContentLoaded',()=>{
+carregarProdutos();
+renderizarCarrinho();
+// startBannerSlider(); // Desativado para evitar conflito com o novo CSS
+
+// Evento de busca
+searchInputEl.addEventListener('input', () => filterProducts());
+
+// Evento de fechar a sidebar do carrinho
+document.querySelector('#carrinho-sidebar .fechar-modal').addEventListener('click', fecharCarrinhoSidebar);
+
+// Evento de fechar a sidebar ao clicar fora
+window.addEventListener('click', e => {
+    if (e.target === carrinhoSidebarEl) {
+        fecharCarrinhoSidebar();
     }
-}
-// FIM ADICIONADO: Funções para o Modal de Detalhes do Produto
-
-
-// Inicialização de Listeners
-document.getElementById('abrir-carrinho').addEventListener('click',()=>{
-modalCarrinhoEl.style.display='block';
-formularioPedidoEl.style.display='none';
-btnIniciarPedidoEl.style.display='block';
 });
-document.querySelector('.fechar-modal').addEventListener('click',()=>{
-modalCarrinhoEl.style.display='none';
-});
-window.addEventListener('click',e=>{
-if(e.target===modalCarrinhoEl){
-modalCarrinhoEl.style.display='none';
-}
-});
-btnIniciarPedidoEl.addEventListener('click',()=>{
-if(carrinho.length>0){
-formularioPedidoEl.style.display='block';
-btnIniciarPedidoEl.style.display='none';
-mensagemStatusEl.textContent='';
-}else{
-alert('Seu carrinho está vazio. Adicione baterias primeiro!');
-}
-});
-btnFinalizarWhatsAppEl.addEventListener('click',finalizarPedidoWhatsApp);
-searchInputEl.addEventListener('keyup', () => filterProducts(searchInputEl.value)); 
 
+// Evento de iniciar pedido
+btnIniciarPedidoEl.addEventListener('click', () => {
+    formularioPedidoEl.style.display = 'block';
+    btnIniciarPedidoEl.style.display = 'none';
+});
 
-// --- JS PARA MENU MOBILE (Novo) ---
+// Evento de finalizar pedido
+document.getElementById('form-pedido').addEventListener('submit', finalizarPedidoWhatsApp);
 
-// 1. Função de Toggle do Menu Mobile
+// Eventos do Menu Mobile
 menuHamburguerEl.addEventListener('click', () => {
     menuMobileContainerEl.classList.toggle('show-menu');
 });
 
-// 2. Fechar o Menu Mobile ao clicar fora (simples)
-document.addEventListener('click', (e) => {
-    if (menuMobileContainerEl.classList.contains('show-menu') && 
-        !menuMobileContainerEl.contains(e.target) && 
-        e.target !== menuHamburguerEl && 
-        !menuHamburguerEl.contains(e.target)) {
-        
+menuMobileContainerEl.addEventListener('click', (e) => {
+    if (e.target === menuMobileContainerEl) {
         menuMobileContainerEl.classList.remove('show-menu');
     }
 });
 
-// 3. Função de Toggle dos Sub-Menus no Mobile (clique)
 submenuLinks.forEach(link => {
     link.addEventListener('click', (e) => {
-        // Verifica se a tela é mobile
-        if (window.innerWidth <= 768) {
-            e.preventDefault(); 
-            const submenu = link.nextElementSibling;
-            
-            // Toggle do submenu clicado
-            if (submenu && submenu.classList.contains('submenu')) {
-                if (submenu.style.display === 'block') {
-                    submenu.style.display = 'none';
-                    link.querySelector('.fa-chevron-down').style.transform = 'none';
-                } else {
-                    // Fecha todos os outros submenus abertos
-                    document.querySelectorAll('#menu-mobile .submenu').forEach(sub => {
-                        if (sub !== submenu) {
-                            sub.style.display = 'none';
-                        }
-                    });
-                    
-                    submenu.style.display = 'block';
-                    link.querySelector('.fa-chevron-down').style.transform = 'rotate(180deg)';
-                }
-            }
+        e.preventDefault();
+        const parentLi = link.closest('li');
+        parentLi.classList.toggle('open');
+        const submenu = parentLi.querySelector('ul');
+        if (submenu) {
+            submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
         }
     });
 });
 
-
-// Inicializa o site
-carregarProdutos();
-renderizarCarrinho();
-startBannerSlider();
-
-// ADICIONADO: Inicializa os listeners para o clique no produto
-// Já está sendo chamado dentro de carregarProdutos() para garantir que os elementos existam.
+});
 </script>
 </body>
 </html>
